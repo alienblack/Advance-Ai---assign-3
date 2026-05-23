@@ -1,0 +1,15 @@
+source_id,trust_level,num_chunks,median_words
+learn_kubernetes_security_book,trusted,489,140.0
+k8s_security_observability_book,trusted,417,141.0
+k8s_access_control_docs,official,250,101.0
+k8s_security_docs,official,228,91.0
+nist_sp_800_190,official,146,143.0
+k8s_operational_security_docs,official,133,94.0
+cncf_cloud_native_security_whitepaper,trusted,130,143.0
+k8s_cve_feed,official,107,141.0
+nsa_cisa_k8s_hardening,official,104,143.0
+aalto_k8s_security_thesis,trusted,103,141.0
+owasp_k8s_cheatsheet,trusted,82,103.0
+wallarm_kubernetes_security_whitepaper,trusted,64,141.5
+redhat_kubernetes_security_pdf,trusted,44,143.5
+practical_devsecops_kubernetes_security_101,trusted,21,102.0

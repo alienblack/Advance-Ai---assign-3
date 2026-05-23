@@ -1,0 +1,6 @@
+config,num_chunks,median_words,mean_words,chunks_under_20_words,chunks_under_40_words,doc_to_chunk_ratio,selected_for_pipeline
+120 / 30 / 40,2869,103.0,96.87,13,73,2.08,False
+160 / 40 / 40,2318,133.0,119.79,13,73,1.68,True
+200 / 40 / 40,1992,157.0,139.13,13,73,1.44,False
+160 / 0 / 40,2309,133.0,119.92,13,73,1.67,False
+160 / 40 / 20,2421,131.0,114.96,13,139,1.75,False

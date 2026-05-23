@@ -1,0 +1,13 @@
+{
+  "snapshot_id": "2026-05-23T101357Z",
+  "num_sources": 14,
+  "num_fetched_items": 38,
+  "num_docs": 1381,
+  "num_chunks": 2318,
+  "embedding_vectors": 2318,
+  "embedding_dimension": 384,
+  "chroma_collection_name": "kubernetes_security_hardening__2026_05_23t101357z",
+  "figures_dir": "/Users/alien/Desktop/Adv ai/rag-k8s-security/submission_ready/output/figures",
+  "tables_dir": "/Users/alien/Desktop/Adv ai/rag-k8s-security/submission_ready/output/tables",
+  "all_chunks_path": "/Users/alien/Desktop/Adv ai/rag-k8s-security/submission_ready/output/all_chunks.txt"
+}

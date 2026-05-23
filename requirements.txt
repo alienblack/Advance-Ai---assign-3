@@ -1,0 +1,12 @@
+requests==2.32.3
+beautifulsoup4==4.12.3
+lxml==5.2.2
+matplotlib==3.9.0
+numpy==1.26.4
+pandas==2.2.2
+pypdf==4.2.0
+sentence-transformers==3.0.1
+transformers==4.46.3
+tokenizers==0.20.3
+huggingface-hub==0.36.2
+chromadb==0.5.23

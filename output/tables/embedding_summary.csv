@@ -1,0 +1,2 @@
+model_name,batch_size,num_vectors,vector_dim,vector_dtype,first_vector_norm,chroma_collection_name,chroma_items
+all-MiniLM-L6-v2,32,2318,384,float32,1.0,kubernetes_security_hardening__2026_05_23t101357z,2318

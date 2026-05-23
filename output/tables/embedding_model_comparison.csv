@@ -1,0 +1,4 @@
+model,embedding_dim,notes,reason_in_project,approx_vector_bytes_for_2318_chunks,approx_vector_mb_for_2318_chunks
+all-MiniLM-L6-v2,384,General-purpose sentence and short-paragraph encoder; 22.7M parameters; fine-tuned on >1B sentence pairs.,Selected baseline,3560448,3.4
+multi-qa-mpnet-base-dot-v1,768,Semantic-search model trained on 215M question-answer pairs.,Higher-dimensional but heavier alternative,7120896,6.79
+bge-small-en,384,Competitive small embedding model; model card recommends a query instruction for short-query-to-passage retrieval.,Strong alternative but needs instruction-style query formatting,3560448,3.4
