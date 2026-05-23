@@ -6,4 +6,4 @@
 - 2318 chunks
 - 2318 embedding vectors
 - 384-dimensional embeddings
-- Chroma collection: kubernetes_security_hardening__2026_05_21t184300z
+- Chroma collection: kubernetes_security_hardening__2026_05_23t101357z
