@@ -1,0 +1,6 @@
+Variant,BERTScore F1,Proxy Core Composite,Manual Quality Score,Unsupported Claim Rate,Redundancy Rate,No-Failure Rate,Interpretation
+V1,0.6123948532342911,0.6727405000000001,3.2,0.1,0.0,0.35,Strong automated baseline; weaker manual trustworthiness.
+V2,0.61239779651165,0.6723994999999999,3.75,0.0,0.0,0.6,Best-balanced final system.
+V3,0.6087972915172577,0.6128975,3.05,0.15,0.0,0.35,Lower overall quality; intent enrichment not consistently beneficial.
+QW_V1,0.5963356292247772,0.66985,3.75,0.3,0.1,0.55,"High usefulness, but highest unsupported-claim risk."
+QW_V3,0.5945826491713524,0.6241065,3.6,0.15,0.1,0.45,Moderate quality; safer than QW_V1 but still weaker than V2.

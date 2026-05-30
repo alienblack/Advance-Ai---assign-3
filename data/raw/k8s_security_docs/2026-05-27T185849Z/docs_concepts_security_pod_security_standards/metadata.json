@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_pod_security_standards",
+  "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+  "fetched_at": "2026-05-27T18:58:49Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "96cdaacfb68c2df005f7222e6eaaeaaf5a219142ed7a39caff6ee643ec52568d",
+  "byte_size": 507056,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T185849Z/docs_concepts_security_pod_security_standards/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "4908",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "48964",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:49 GMT",
+    "Etag": "\"f6fd216c62c78ce0639284a5887d7465-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVFW6VN263Y2FND5K9VKF"
+  }
+}

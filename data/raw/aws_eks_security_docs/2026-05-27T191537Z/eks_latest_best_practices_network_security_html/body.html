@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Network security - Amazon EKS</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="network-security" /><meta name="default_state" content="network-security" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/eks/latest/best-practices/network-security.html" /><meta name="description" content="Network security has several facets. The first involves the application of rules which restrict the flow of network traffic between services. The second involves the encryption of traffic while it is in transit. The mechanisms to implement these security measures on EKS are varied but often include the following items:" /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon EKS" /><meta name="guide" content="Best Practices Guide" /><meta name="abstract" content="Learn best practices for operating EKS clusters." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/eks/latest/best-practices/network-security.html" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/eks/latest/best-practices/network-security.html" hreflang="id-id" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/eks/latest/best-practices/network-security.html" hreflang="id" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/eks/latest/best-practices/network-security.html" hreflang="de-de" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/eks/latest/best-practices/network-security.html" hreflang="de" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/network-security.html" hreflang="en-us" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/network-security.html" hreflang="en" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/eks/latest/best-practices/network-security.html" hreflang="es-es" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/eks/latest/best-practices/network-security.html" hreflang="es" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/eks/latest/best-practices/network-security.html" hreflang="fr-fr" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/eks/latest/best-practices/network-security.html" hreflang="fr" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/eks/latest/best-practices/network-security.html" hreflang="it-it" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/eks/latest/best-practices/network-security.html" hreflang="it" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/eks/latest/best-practices/network-security.html" hreflang="ja-jp" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/eks/latest/best-practices/network-security.html" hreflang="ja" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/eks/latest/best-practices/network-security.html" hreflang="ko-kr" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/eks/latest/best-practices/network-security.html" hreflang="ko" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/eks/latest/best-practices/network-security.html" hreflang="pt-br" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/eks/latest/best-practices/network-security.html" hreflang="pt" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_cn/eks/latest/best-practices/network-security.html" hreflang="zh-cn" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_tw/eks/latest/best-practices/network-security.html" hreflang="zh-tw" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/network-security.html" hreflang="x-default" /><meta name="feedback-item" content="Amazon EKS" /><meta name="this_doc_product" content="Amazon EKS" /><meta name="this_doc_guide" content="Best Practices Guide" /><head xmlns="http://www.w3.org/1999/xhtml"> <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js"></script><link href="/assets/r/awsdocs-doc-page.2.0.0.css" rel="stylesheet"/></head>
+<script defer="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'eks'}"></script><meta id="panorama-serviceSubSection" value="Best Practices Guide" /><meta id="panorama-serviceConsolePage" value="Network security" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><p><a href="network-security.md">View a markdown version of this page</a></p><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Network security - Amazon EKS</title><meta name="pdf" content="/pdfs/eks/latest/best-practices/eks-bpg.pdf#network-security" /><meta name="github" content="https://github.com/aws/aws-eks-best-practices/tree/master/latest/bpg/security/network.adoc" /><meta name="forums" content="https://repost.aws/tags/TA4IvCeWI1TE66q4jEj4Z9zg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon%20EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/network-security.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/network-security.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/network-security.html" /><link rel="alternate" type="text/markdown" href="network-security.md" title="Markdown version" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon EKS",
+        "item" : "https://docs.aws.amazon.com/eks/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Best Practices Guide",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Best Practices for Security",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Network security",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices/security.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/eks/latest/best-practices/eks-bpg.pdf#network-security" target="_blank" rel="noopener noreferrer" title="Open PDF"></a><a href="https://github.com/aws/aws-eks-best-practices/tree/master/latest/bpg/security/network.adoc" target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="/index.html">Documentation</a><a href="/eks/index.html">Amazon EKS</a><a href="introduction.html">Best Practices Guide</a></div><div id="page-toc-src"><a href="#_traffic_control">Traffic control</a><a href="#_network_encryption">Network encryption</a><a href="#iam-network-policy">Network policy</a><a href="#_recommendations">Recommendations</a><a href="#_security_groups">Security groups</a><a href="#_when_to_use_network_policy_vs_security_group_for_pods">When to use Network Policy vs Security Group for Pods?</a><a href="#_service_mesh_policy_enforcement_or_kubernetes_network_policy">Service Mesh Policy Enforcement or Kubernetes network policy</a><a href="#_thirdparty_network_policy_engines">ThirdParty Network Policy Engines</a><a href="#_encryption_in_transit">Encryption in transit</a><a href="#_tools_and_resources">Tools and resources</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="network-security">Network security</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="awsdocs-note awsdocs-tip"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Tip</h6></div><div class="awsdocs-note-text"><p>
+         <a href="https://aws-experience.com/emea/smb/events/series/get-hands-on-with-amazon-eks?trk=4a9b4147-2490-4c63-bc9f-f8a84b122c8c&amp;sc_channel=el" rel="noopener noreferrer" target="_blank"><span>Explore</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> best practices through Amazon EKS workshops.</p></div></div><p>Network security has several facets. The first involves the application
+of rules which restrict the flow of network traffic between services.
+The second involves the encryption of traffic while it is in transit.
+The mechanisms to implement these security measures on EKS are varied
+but often include the following items:</p>
+      <h2 id="_traffic_control">Traffic control</h2>
+      <div class="itemizedlist">
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>Network Policies</p>
+         </li><li class="listitem">
+            <p>Security Groups</p>
+         </li></ul></div>
+    
+      <h2 id="_network_encryption">Network encryption</h2>
+      <div class="itemizedlist">
+          
+          
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>Service Mesh</p>
+         </li><li class="listitem">
+            <p>Container Network Interfaces (CNIs)</p>
+         </li><li class="listitem">
+            <p>Ingress Controllers and Load Balancers</p>
+         </li><li class="listitem">
+            <p>Nitro Instances</p>
+         </li><li class="listitem">
+            <p>ACM Private CA with cert-manager</p>
+         </li></ul></div>
+    
+      <h2 id="iam-network-policy">Network policy</h2>
+      <p>Within a Kubernetes cluster, all Pod to Pod communication is allowed by
+default. While this flexibility may help promote experimentation, it is
+not considered secure. Kubernetes network policies give you a mechanism
+to restrict network traffic between Pods (often referred to as East/West
+traffic) as well as between Pods and external services. Kubernetes
+network policies operate at layers 3 and 4 of the OSI model. Network
+policies use pod, namespace selectors and labels to identify source and
+destination pods, but can also include IP addresses, port numbers,
+protocols, or a combination of these. Network Policies can be applied to
+both Inbound or Outbound connections to the pod, often called Ingress
+and Egress rules.</p>
+      <p>With native network policy support of Amazon VPC CNI Plugin, you can
+implement network policies to secure network traffic in kubernetes
+clusters. This integrates with the upstream Kubernetes Network Policy
+API, ensuring compatibility and adherence to Kubernetes standards. You
+can define policies using different
+<a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/" rel="noopener noreferrer" target="_blank"><span>identifiers</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+supported by the upstream API. By default, all ingress and egress
+traffic is allowed to a pod. When a network policy with a policyType
+Ingress is specified, only allowed connections into the pod are those
+from the pod’s node and those allowed by the ingress rules. Same applies
+for egress rules. If multiple rules are defined, then union of all rules
+are taken into account when making the decision. Thus, order of
+evaluation does not affect the policy result.</p>
+      <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>When you first provision an EKS cluster, VPC CNI Network Policy functionality is not enabled by default. Ensure you deployed supported VPC CNI Add-on version and set <code class="code">ENABLE_NETWORK_POLICY</code> flag to <code class="code">true</code> on the vpc-cni add-on to enable this. Refer <a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html">Amazon EKS User guide</a> for detailed instructions.</p></div></div>
+    
+      <h2 id="_recommendations">Recommendations</h2>
+       
+         <h3 id="_getting_started_with_network_policies_follow_principle_of_least_privilege">Getting Started with Network Policies - Follow Principle of Least Privilege</h3>
+          
+            <h4 id="_create_a_default_deny_policy">Create a default deny policy</h4>
+            <p>As with RBAC policies, it is recommended to follow least privileged
+access principles with network policies. Start by creating a deny all
+policy that restricts all inbound and outbound traffic with in a
+namespace.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: default
+spec:
+  podSelector: <span>{</span>}
+  policyTypes:
+  - Ingress
+  - Egress</code></pre>
+            <p>
+               <b>default-deny</b>
+            </p>
+            <div class="mediaobject">
+                
+                  <img src="/images/eks/latest/best-practices/images/security/default-deny.jpg" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="default-deny" />
+                
+                
+            </div>
+            <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>The image above was created by the network policy viewer from <a href="https://orca.tufin.io/netpol/" rel="noopener noreferrer" target="_blank"><span>Tufin</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p></div></div>
+          
+          
+            <h4 id="_create_a_rule_to_allow_dns_queries">Create a rule to allow DNS queries</h4>
+            <p>Once you have the default deny all rule in place, you can begin layering
+on additional rules, such as a rule that allows pods to query CoreDNS
+for name resolution.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-dns-access
+  namespace: default
+spec:
+  podSelector:
+    matchLabels: <span>{</span>}
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53</code></pre>
+            <p>
+               <b>allow-dns-access</b>
+            </p>
+            <div class="mediaobject">
+                
+                  <img src="/images/eks/latest/best-practices/images/security/allow-dns-access.jpg" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="allow-dns-access" />
+                
+                
+            </div>
+          
+          
+            <h4 id="_incrementally_add_rules_to_selectively_allow_the_flow_of_traffic_between_namespacespods">Incrementally add rules to selectively allow the flow of traffic between namespaces/pods</h4>
+            <p>Understand the application requirements and create fine-grained ingress
+and egress rules as needed. Below example shows how to restrict ingress
+traffic on port 80 to <code class="code">app-one</code> from <code class="code">client-one</code>. This helps
+minimize the attack surface and reduces the risk of unauthorized access.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-app-one
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      k8s-app: app-one
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          k8s-app: client-one
+    ports:
+    - protocol: TCP
+      port: 80</code></pre>
+            <p>
+               <b>allow-ingress-app-one</b>
+            </p>
+            <div class="mediaobject">
+                
+                  <img src="/images/eks/latest/best-practices/images/security/allow-ingress-app-one.png" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="allow-ingress-app-one" />
+                
+                
+            </div>
+          
+       
+       
+         <h3 id="_monitoring_network_policy_enforcement">Monitoring network policy enforcement</h3>
+         <div class="itemizedlist">
+             
+             
+             
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <strong>Use Network Policy editor</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>
+                        <a href="https://networkpolicy.io/" rel="noopener noreferrer" target="_blank"><span>Network policy editor</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> helps with
+visualizations, security score, autogenerates from network flow logs</p>
+                  </li><li class="listitem">
+                     <p>Build network policies in an interactive way</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Audit Logs</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Regularly review audit logs of your EKS cluster</p>
+                  </li><li class="listitem">
+                     <p>Audit logs provide wealth of information about what actions have been
+performed on your cluster including changes to network policies</p>
+                  </li><li class="listitem">
+                     <p>Use this information to track changes to your network policies over
+time and detect any unauthorized or unexpected changes</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Automated testing</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Implement automated testing by creating a test environment that
+mirrors your production environment and periodically deploy workloads
+that attempt to violate your network policies.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Monitoring metrics</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Configure your observability agents to scrape the prometheus metrics
+from the VPC CNI node agents, that allows to monitor the agent health,
+and sdk errors.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Audit Network Policies regularly</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Periodically audit your Network Policies to make sure that they meet
+your current application requirements. As your application evolves, an
+audit gives you the opportunity to remove redundant ingress, egress
+rules and make sure that your applications don’t have excessive
+permissions.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Ensure Network Policies exists using Open Policy Agent (OPA)</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Use OPA Policy like shown below to ensure Network Policy always
+exists before onboarding application pods. This policy denies onboarding
+k8s pods with a label <code class="code">k8s-app: sample-app</code> if corresponding network
+policy does not exist.</p>
+                  </li></ul></div>
+            </li></ul></div>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (rego)--><code class="rego ">package kubernetes.admission
+import data.kubernetes.networkpolicies
+
+deny[msg] <span>{</span>
+    input.request.kind.kind == "Pod"
+    pod_label_value := <span>{</span>v["k8s-app"] | v := input.request.object.metadata.labels}
+    contains_label(pod_label_value, "sample-app")
+    np_label_value := <span>{</span>v["k8s-app"] | v := networkpolicies[_].spec.podSelector.matchLabels}
+    not contains_label(np_label_value, "sample-app")
+    msg:= sprintf("The Pod %v could not be created because it is missing an associated Network Policy.", [input.request.object.metadata.name])
+}
+contains_label(arr, val) <span>{</span>
+    arr[_] == val
+}</code></pre>
+       
+       
+         <h3 id="_troubleshooting">Troubleshooting</h3>
+          
+            <h4 id="_monitor_the_vpc_network_policy_controller_node_agent_logs">Monitor the vpc-network-policy-controller, node-agent logs</h4>
+            <p>Enable the EKS Control plane controller manager logs to diagnose the
+network policy functionality. You can stream the control plane logs to a
+CloudWatch log group and use
+<a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html">CloudWatch
+Log insights</a> to perform advanced queries. From the logs, you can view
+what pod endpoint objects are resolved to a Network Policy,
+reconcilation status of the policies, and debug if the policy is working
+as expected.</p>
+            <p>In addition, Amazon VPC CNI allows you to enable the collection and
+export of policy enforcement logs to
+<a href="https://aws.amazon.com/cloudwatch/" rel="noopener noreferrer" target="_blank"><span>Amazon Cloudwatch</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> from the EKS
+worker nodes. Once enabled, you can leverage
+<a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html">CloudWatch
+Container Insights</a> to provide insights on your usage related to Network
+Policies.</p>
+            <p>Amazon VPC CNI also ships an SDK that provides an interface to interact
+with eBPF programs on the node. The SDK is installed when the
+<code class="code">aws-node</code> is deployed onto the nodes. You can find the SDK binary
+installed under <code class="code">/opt/cni/bin</code> directory on the node. At launch, the
+SDK provides support for fundamental functionalities such as inspecting
+eBPF programs and maps.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (shell)--><code class="shell ">sudo /opt/cni/bin/aws-eks-na-cli ebpf progs</code></pre>
+          
+          
+            <h4 id="_log_network_traffic_metadata">Log network traffic metadata</h4>
+            <p>
+               <a href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html">AWS VPC
+Flow Logs</a> captures metadata about the traffic flowing through a VPC,
+such as source and destination IP address and port along with
+accepted/dropped packets. This information could be analyzed to look for
+suspicious or unusual activity between resources within the VPC,
+including Pods. However, since the IP addresses of pods frequently
+change as they are replaced, Flow Logs may not be sufficient on its own.
+Calico Enterprise extends the Flow Logs with pod labels and other
+metadata, making it easier to decipher the traffic flows between pods.</p>
+          
+       
+    
+      <h2 id="_security_groups">Security groups</h2>
+      <p>EKS uses
+<a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html">AWS
+VPC Security Groups</a> (SGs) to control the traffic between the Kubernetes
+control plane and the cluster’s worker nodes. Security groups are also
+used to control the traffic between worker nodes, and other VPC
+resources, and external IP addresses. When you provision an EKS cluster
+(with Kubernetes version 1.14-eks.3 or greater), a cluster security
+group is automatically created for you. This security group allows
+unfettered communication between the EKS control plane and the nodes
+from managed node groups. For simplicity, it is recommended that you add
+the cluster SG to all node groups, including unmanaged node groups.</p>
+      <p>Prior to Kubernetes version 1.14 and EKS version eks.3, there were
+separate security groups configured for the EKS control plane and node
+groups. The minimum and suggested rules for the control plane and node
+group security groups can be found at
+https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html.
+The minimum rules for the <em>control plane security group</em> allows port 443
+inbound from the worker node SG. This rule is what allows the kubelets
+to communicate with the Kubernetes API server. It also includes port
+10250 for outbound traffic to the worker node SG; 10250 is the port that
+the kubelets listen on. Similarly, the minimum <em>node group</em> rules allow
+port 10250 inbound from the control plane SG and 443 outbound to the
+control plane SG. Finally there is a rule that allows unfettered
+communication between nodes within a node group.</p>
+      <p>If you need to control communication between services that run within
+the cluster and service the run outside the cluster such as an RDS
+database, consider
+<a href="https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html">security
+groups for pods</a>. With security groups for pods, you can assign an
+<strong>existing</strong> security group to a collection of pods.</p>
+      <div class="awsdocs-note awsdocs-warning"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Warning</h6></div><div class="awsdocs-note-text"><p>If you reference a security group that does not exist prior to the creation of the pods, the pods will not get scheduled.</p></div></div>
+      <p>You can control which pods are assigned to a security group by creating
+a <code class="code">SecurityGroupPolicy</code> object and specifying a <code class="code">PodSelector</code> or a
+<code class="code">ServiceAccountSelector</code>. Setting the selectors to <code class="code"><span>{</span>}</code> will assign
+the SGs referenced in the <code class="code">SecurityGroupPolicy</code> to all pods in a
+namespace or all Service Accounts in a namespace. Be sure you’ve
+familiarized yourself with all the
+<a href="https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html#security-groups-pods-considerations">considerations</a>
+before implementing security groups for pods.</p>
+      <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>If you use SGs for pods you <strong>must</strong> create SGs that allow port 53 outbound to the cluster security group. Similarly, you <strong>must</strong> update the cluster security group to accept port 53 inbound traffic from the pod security group.</p></div></div>
+      <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>The <a href="https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-security-groups">limits for security groups</a> still apply when using security groups for pods so use them judiciously.</p></div></div>
+      <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>You <strong>must</strong> create rules for inbound traffic from the cluster security group (kubelet) for all of the probes configured for pod.</p></div></div>
+      <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>Security groups for pods relies on a feature known as <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html">ENI trunking</a> which was created to increase the ENI density of an EC2 instance. When a pod is assigned to an SG, a VPC controller associates a branch ENI from the node group with the pod. If there aren’t enough branch ENIs available in a node group at the time the pod is scheduled, the pod will stay in pending state. The number of branch ENIs an instance can support varies by instance type/family. See https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html#supported-instance-types for further details.</p></div></div>
+      <p>While security groups for pods offers an AWS-native way to control
+network traffic within and outside of your cluster without the overhead
+of a policy daemon, other options are available. For example, the Cilium
+policy engine allows you to reference a DNS name in a network policy.
+Calico Enterprise includes an option for mapping network policies to AWS
+security groups. If you’ve implemented a service mesh like Istio, you
+can use an egress gateway to restrict network egress to specific, fully
+qualified domains or IP addresses. For further information about this
+option, read the three part series on
+<a href="https://istio.io/blog/2019/egress-traffic-control-in-istio-part-1/" rel="noopener noreferrer" target="_blank"><span>egress
+traffic control in Istio</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+    
+      <h2 id="_when_to_use_network_policy_vs_security_group_for_pods">When to use Network Policy vs Security Group for Pods?</h2>
+       
+         <h3 id="_when_to_use_kubernetes_network_policy">When to use Kubernetes network policy</h3>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <strong>Controlling pod-to-pod traffic</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Suitable for controlling network traffic between pods inside a
+cluster (east-west traffic)</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Control traffic at the IP address or port level (OSI layer 3 or 4)</strong>
+               </p>
+            </li></ul></div>
+       
+       
+         <h3 id="_when_to_use_aws_security_groups_for_pods_sgp">When to use AWS Security groups for pods (SGP)</h3>
+         <div class="itemizedlist">
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <strong>Leverage existing AWS configurations</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>If you already have complex set of EC2 security groups that manage
+access to AWS services and you are migrating applications from EC2
+instances to EKS, SGPs can be a very good choice allowing you to reuse
+security group resources and apply them to your pods.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Control access to AWS services</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Your applications running within an EKS cluster wants to communicate
+with other AWS services (RDS database), use SGPs as an efficient
+mechanism to control the traffic from the pods to AWS services.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Isolation of Pod &amp; Node traffic</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>If you want to completely separate pod traffic from the rest of the
+node traffic, use SGP in <code class="code">POD_SECURITY_GROUP_ENFORCING_MODE=strict</code>
+mode.</p>
+                  </li></ul></div>
+            </li></ul></div>
+       
+       
+         <h3 id="_best_practices_using_security_groups_for_pods_and_network_policy">Best practices using Security groups for pods and Network Policy</h3>
+         <div class="itemizedlist">
+             
+             
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <strong>Layered security</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Use a combination of SGP and kubernetes network policy for a layered
+security approach</p>
+                  </li><li class="listitem">
+                     <p>Use SGPs to limit network level access to AWS services that are not
+part of a cluster, while kubernetes network policies can restrict
+network traffic between pods inside the cluster</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Principle of least privilege</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Only allow necessary traffic between pods or namespaces</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Segment your applications</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Wherever possible, segment applications by the network policy to
+reduce the blast radius if an application is compromised</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Keep policies simple and clear</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Kubernetes network policies can be quite granular and complex, its
+best to keep them as simple as possible to reduce the risk of
+misconfiguration and ease the management overhead</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Reduce the attack surface</strong>
+               </p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Minimize the attack surface by limiting the exposure of your
+applications</p>
+                  </li></ul></div>
+            </li></ul></div>
+         <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>Security Groups for pods provides two enforcing modes: <code class="code">strict</code> and <code class="code">standard</code>. You must use <code class="code">standard</code> mode when using both Network Policy and Security Groups for pods features in an EKS cluster.</p></div></div>
+         <p>When it comes to network security, a layered approach is often the most
+effective solution. Using kubernetes network policy and SGP in
+combination can provide a robust defense-in-depth strategy for your
+applications running in EKS.</p>
+       
+    
+      <h2 id="_service_mesh_policy_enforcement_or_kubernetes_network_policy">Service Mesh Policy Enforcement or Kubernetes network policy</h2>
+      <p>A <code class="code">service mesh</code> is a dedicated infrastructure layer that you can add
+to your applications. It allows you to transparently add capabilities
+like observability, traffic management, and security, without adding
+them to your own code.</p>
+      <p>Service mesh enforces policies at Layer 7 (application) of OSI model
+whereas kubernetes network policies operate at Layer 3 (network) and
+Layer 4 (transport). There are many offerings in this space like AWS
+AppMesh, Istio, Linkerd, etc.,</p>
+       
+         <h3 id="_when_to_use_service_mesh_for_policy_enforcement">When to use Service mesh for policy enforcement</h3>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>Have existing investment in a service mesh</p>
+            </li><li class="listitem">
+               <p>Need more advanced capabilities like traffic management, observability
+&amp; security</p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Traffic control, load balancing, circuit breaking, rate limiting,
+timeouts etc.</p>
+                  </li><li class="listitem">
+                     <p>Detailed insights into how your services are performing (latency,
+error rates, requests per second, request volumes etc.)</p>
+                  </li><li class="listitem">
+                     <p>You want to implement and leverage service mesh for security features
+like mTLS</p>
+                  </li></ul></div>
+            </li></ul></div>
+       
+       
+         <h3 id="_choose_kubernetes_network_policy_for_simpler_use_cases">Choose Kubernetes network policy for simpler use cases</h3>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>Limit which pods can communicate with each other</p>
+            </li><li class="listitem">
+               <p>Network policies require fewer resources than a service mesh making
+them a good fit for simpler use cases or for smaller clusters where the
+overhead of running and managing a service mesh might not be justified</p>
+            </li></ul></div>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Network policies and Service mesh can also be used together. Use network policies to provide a baseline level of security and isolation between your pods and then use a service mesh to add additional capabilities like traffic management, observability and security.</p></div></div>
+       
+    
+      <h2 id="_thirdparty_network_policy_engines">ThirdParty Network Policy Engines</h2>
+      <p>Consider a Third Party Network Policy Engine when you have advanced
+policy requirements like Global Network Policies, support for DNS
+Hostname based rules, Layer 7 rules, ServiceAccount based rules, and
+explicit deny/log actions, etc.,
+<a href="https://docs.projectcalico.org/introduction/" rel="noopener noreferrer" target="_blank"><span>Calico</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, is an open source
+policy engine from <a href="https://tigera.io" rel="noopener noreferrer" target="_blank"><span>Tigera</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> that works well with EKS.
+In addition to implementing the full set of Kubernetes network policy
+features, Calico supports extended network polices with a richer set of
+features, including support for layer 7 rules, e.g. HTTP, when
+integrated with Istio. Calico policies can be scoped to Namespaces,
+Pods, service accounts, or globally. When policies are scoped to a
+service account, it associates a set of ingress/egress rules with that
+service account. With the proper RBAC rules in place, you can prevent
+teams from overriding these rules, allowing IT security professionals to
+safely delegate administration of namespaces. Isovalent, the maintainers
+of <a href="https://cilium.readthedocs.io/en/stable/intro/" rel="noopener noreferrer" target="_blank"><span>Cilium</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, have also
+extended the network policies to include partial support for layer 7
+rules, e.g. HTTP. Cilium also has support for DNS hostnames which can be
+useful for restricting traffic between Kubernetes Services/Pods and
+resources that run within or outside of your VPC. By contrast, Calico
+Enterprise includes a feature that allows you to map a Kubernetes
+network policy to an AWS security group, as well as DNS hostnames.</p>
+      <p>You can find a list of common Kubernetes network policies at
+https://github.com/ahmetb/kubernetes-network-policy-recipes. A similar
+set of rules for Calico are available at
+https://docs.projectcalico.org/security/calico-network-policy.</p>
+       
+         <h3 id="_migration_to_amazon_vpc_cni_network_policy_engine">Migration to Amazon VPC CNI Network Policy Engine</h3>
+         <p>To maintain consistency and avoid unexpected pod communication behavior,
+it is recommended to deploy only one Network Policy Engine in your
+cluster. If you want to migrate from 3P to VPC CNI Network Policy
+Engine, we recommend converting your existing 3P NetworkPolicy CRDs to
+the Kubernetes NetworkPolicy resources before enabling VPC CNI network
+policy support. And, test the migrated policies in a separate test
+cluster before applying them in you production environment. This allows
+you to identify and address any potential issues or inconsistencies in
+pod communication behavior.</p>
+          
+            <h4 id="_migration_tool">Migration Tool</h4>
+            <p>To assist in your migration process, we have developed a tool called
+<a href="https://github.com/awslabs/k8s-network-policy-migrator" rel="noopener noreferrer" target="_blank"><span>K8s Network
+Policy Migrator</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> that converts your existing Calico/Cilium network
+policy CRDs to Kubernetes native network policies. After conversion you
+can directly test the converted network policies on your new clusters
+running VPC CNI network policy controller. The tool is designed to help
+you streamline the migration process and ensure a smooth transition.</p>
+            <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>Migration tool will only convert 3P policies that are compatible with native kubernetes network policy api. If you are using advanced network policy features offered by 3P plugins, Migration tool will skip and report them.</p></div></div>
+            <p>Please note that migration tool is currently not supported by AWS VPC
+CNI Network policy engineering team, it is made available to customers
+on a best-effort basis. We encourage you to utilize this tool to
+facilitate your migration process. In the event that you encounter any
+issues or bugs with the tool, we kindly ask you create a
+<a href="https://github.com/awslabs/k8s-network-policy-migrator/issues" rel="noopener noreferrer" target="_blank"><span>GitHub
+issue</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Your feedback is invaluable to us and will assist in the
+continuous improvement of our services.</p>
+          
+       
+       
+         <h3 id="_additional_resources">Additional Resources</h3>
+         <div class="itemizedlist">
+             
+             
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <a href="https://youtu.be/lEY2WnRHYpg" rel="noopener noreferrer" target="_blank"><span>Kubernetes &amp; Tigera: Network
+Policies, Security, and Audit</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://www.tigera.io/tigera-products/calico-enterprise/" rel="noopener noreferrer" target="_blank"><span>Calico
+Enterprise</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://cilium.readthedocs.io/en/stable/intro/" rel="noopener noreferrer" target="_blank"><span>Cilium</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://cilium.io/blog/2021/02/10/network-policy-editor" rel="noopener noreferrer" target="_blank"><span>NetworkPolicy
+Editor</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> an interactive policy editor from Cilium</p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://www.inspektor-gadget.io/docs/latest/gadgets/advise/network-policy/" rel="noopener noreferrer" target="_blank"><span>Inspektor
+Gadget advise network-policy gadget</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> Suggests network policies based on
+an analysis of network traffic</p>
+            </li></ul></div>
+       
+    
+      <h2 id="_encryption_in_transit">Encryption in transit</h2>
+      <p>Applications that need to conform to PCI, HIPAA, or other regulations
+may need to encrypt data while it is in transit. Nowadays TLS is the de
+facto choice for encrypting traffic on the wire. TLS, like it’s
+predecessor SSL, provides secure communications over a network using
+cryptographic protocols. TLS uses symmetric encryption where the keys to
+encrypt the data are generated based on a shared secret that is
+negotiated at the beginning of the session. The following are a few ways
+that you can encrypt data in a Kubernetes environment.</p>
+       
+         <h3 id="_nitro_instances">Nitro Instances</h3>
+         <p>Traffic exchanged between the following Nitro instance types, e.g. C5n,
+G4, I3en, M5dn, M5n, P3dn, R5dn, and R5n, is automatically encrypted by
+default. When there’s an intermediate hop, like a transit gateway or a
+load balancer, the traffic is not encrypted. See
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html#encryption-transit">Encryption
+in transit</a> for further details on encryption in transit as well as the
+complete list of instances types that support network encryption by
+default.</p>
+       
+       
+         <h3 id="_container_network_interfaces_cnis">Container Network Interfaces (CNIs)</h3>
+         <p>
+            <a href="https://www.weave.works/oss/net/" rel="noopener noreferrer" target="_blank"><span>WeaveNet</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> can be configured to
+automatically encrypt all traffic using NaCl encryption for sleeve
+traffic, and IPsec ESP for fast datapath traffic.</p>
+       
+       
+         <h3 id="_service_mesh">Service Mesh</h3>
+         <p>Encryption in transit can also be implemented with a service mesh like
+App Mesh, Linkerd v2, and Istio. AppMesh supports
+<a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html">mTLS</a>
+with X.509 certificates or Envoy’s Secret Discovery Service(SDS).
+Linkerd and Istio both have support for mTLS.</p>
+         <p>The <a href="https://github.com/aws/aws-app-mesh-examples" rel="noopener noreferrer" target="_blank"><span>aws-app-mesh-examples</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+GitHub repository provides walkthroughs for configuring mTLS using X.509
+certificates and SPIRE as SDS provider with your Envoy container:</p>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <a href="https://github.com/aws/aws-app-mesh-examples/tree/main/walkthroughs/howto-k8s-mtls-file-based" rel="noopener noreferrer" target="_blank"><span>Configuring
+mTLS using X.509 certificates</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://github.com/aws/aws-app-mesh-examples/tree/main/walkthroughs/howto-k8s-mtls-sds-based" rel="noopener noreferrer" target="_blank"><span>Configuring
+TLS using SPIRE (SDS)</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li></ul></div>
+         <p>App Mesh also supports
+<a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual-node-tls.html">TLS
+encryption</a> with a private certificate issued by
+<a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html">AWS
+Certificate Manager</a> (ACM) or a certificate stored on the local file
+system of the virtual node.</p>
+         <p>The <a href="https://github.com/aws/aws-app-mesh-examples" rel="noopener noreferrer" target="_blank"><span>aws-app-mesh-examples</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+GitHub repository provides walkthroughs for configuring TLS using
+certificates issued by ACM and certificates that are packaged with your
+Envoy container:</p>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <a href="https://github.com/aws/aws-app-mesh-examples/tree/master/walkthroughs/howto-tls-file-provided" rel="noopener noreferrer" target="_blank"><span>Configuring
+TLS with File Provided TLS Certificates</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://github.com/aws/aws-app-mesh-examples/tree/master/walkthroughs/tls-with-acm" rel="noopener noreferrer" target="_blank"><span>Configuring
+TLS with AWS Certificate Manager</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+               </p>
+            </li></ul></div>
+       
+       
+         <h3 id="_ingress_controllers_and_load_balancers">Ingress Controllers and Load Balancers</h3>
+         <p>Ingress controllers are a way for you to intelligently route HTTP/S
+traffic that emanates from outside the cluster to services running
+inside the cluster. Oftentimes, these Ingresses are fronted by a layer 4
+load balancer, like the Classic Load Balancer or the Network Load
+Balancer (NLB). Encrypted traffic can be terminated at different places
+within the network, e.g. at the load balancer, at the ingress resource,
+or the Pod. How and where you terminate your SSL connection will
+ultimately be dictated by your organization’s network security policy.
+For instance, if you have a policy that requires end-to-end encryption,
+you will have to decrypt the traffic at the Pod. This will place
+additional burden on your Pod as it will have to spend cycles
+establishing the initial handshake. Overall SSL/TLS processing is very
+CPU intensive. Consequently, if you have the flexibility, try performing
+the SSL offload at the Ingress or the load balancer.</p>
+          
+            <h4 id="_use_encryption_with_aws_elastic_load_balancers">Use encryption with AWS Elastic load balancers</h4>
+            <p>The
+<a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">AWS
+Application Load Balancer</a> (ALB) and
+<a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html">Network
+Load Balancer</a> (NLB) both have support for transport encryption (SSL and
+TLS). The <code class="code">alb.ingress.kubernetes.io/certificate-arn</code> annotation for
+the ALB lets you to specify which certificates to add to the ALB. If you
+omit the annotation the controller will attempt to add certificates to
+listeners that require it by matching the available
+<a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html">AWS
+Certificate Manager (ACM)</a> certificates using the host field. Starting
+with EKS v1.15 you can use the
+<code class="code">service.beta.kubernetes.io/aws-load-balancer-ssl-cert</code> annotation
+with the NLB as shown in the example below.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: v1
+kind: Service
+metadata:
+  name: demo-app
+  namespace: default
+  labels:
+    app: demo-app
+  annotations:
+     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "&lt;certificate ARN&gt;"
+     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 443
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: demo-app
+//---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx
+  namespace: default
+  labels:
+    app: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 443
+              protocol: TCP
+            - containerPort: 80
+              protocol: TCP</code></pre>
+            <p>Following are additional examples for SSL/TLS termination.</p>
+            <div class="itemizedlist">
+                
+                
+            <ul class="itemizedlist"><li class="listitem">
+                  <p>
+                     <a href="https://aws.amazon.com/blogs/containers/securing-eks-ingress-contour-lets-encrypt-gitops/" rel="noopener noreferrer" target="_blank"><span>Securing
+EKS Ingress With Contour And Let’s Encrypt The GitOps Way</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+                  </p>
+               </li><li class="listitem">
+                  <p>
+                     <a href="https://aws.amazon.com/premiumsupport/knowledge-center/terminate-https-traffic-eks-acm/" rel="noopener noreferrer" target="_blank"><span>How
+do I terminate HTTPS traffic on Amazon EKS workloads with ACM?</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+                  </p>
+               </li></ul></div>
+            <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>Some Ingresses, like the AWS LB controller, implement the SSL/TLS using Annotations instead of as part of the Ingress Spec.</p></div></div>
+          
+       
+       
+         <h3 id="iam-cert-manager">ACM Private CA with cert-manager</h3>
+         <p>You can enable TLS and mTLS to secure your EKS application workloads at
+the ingress, on the pod, and between pods using ACM Private Certificate
+Authority (CA) and <a href="https://cert-manager.io/" rel="noopener noreferrer" target="_blank"><span>cert-manager</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, a popular
+Kubernetes add-on to distribute, renew, and revoke certificates. ACM
+Private CA is a highly-available, secure, managed CA without the upfront
+and maintenance costs of managing your own CA. If you are using the
+default Kubernetes certificate authority, there is an opportunity to
+improve your security and meet compliance requirements with ACM Private
+CA. ACM Private CA secures private keys in FIPS 140-2 Level 3 hardware
+security modules (very secure), compared with the default CA storing
+keys encoded in memory (less secure). A centralized CA also gives you
+more control and improved auditability for private certificates both
+inside and outside of a Kubernetes environment.</p>
+          
+            <h4 id="iam-ca-mode">Short-Lived CA Mode for Mutual TLS Between Workloads</h4>
+            <p>When using ACM Private CA for mTLS in EKS, it is recommended that you
+use short lived certificates with <em>short-lived CA mode</em>. Although it is
+possible to issue out short-lived certificates in the general-purpose CA
+mode, using short-lived CA mode works out more cost-effective (~75%
+cheaper than general mode) for use cases where new certificates need to
+be issued frequently. In addition to this, you should try to align the
+validity period of the private certificates with the lifetime of the
+pods in your EKS cluster.
+<a href="https://aws.amazon.com/certificate-manager/private-certificate-authority/" rel="noopener noreferrer" target="_blank"><span>Learn
+more about ACM Private CA and its benefits here</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+          
+          
+            <h4 id="_acm_setup_instructions">ACM Setup Instructions</h4>
+            <p>Start by creating a Private CA by following procedures provided in the
+<a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/create-CA.html">ACM
+Private CA tech docs</a>. Once you have a Private CA, install cert-manager
+using <a href="https://cert-manager.io/docs/installation/" rel="noopener noreferrer" target="_blank"><span>regular installation
+instructions</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. After installing cert-manager, install the Private CA
+Kubernetes cert-manager plugin by following the
+<a href="https://github.com/cert-manager/aws-privateca-issuer#setup" rel="noopener noreferrer" target="_blank"><span>setup
+instructions in GitHub</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. The plugin lets cert-manager request private
+certificates from ACM Private CA.</p>
+            <p>Now that you have a Private CA and an EKS cluster with cert-manager and
+the plugin installed, it’s time to set permissions and create the
+issuer. Update IAM permissions of the EKS node role to allow access to
+ACM Private CA. Replace the <code class="code">&lt;CA_ARN&gt;</code> with the value from your
+Private CA:</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json "><span>{</span>
+    "Version":"2012-10-17",
+    "Statement": [
+        <span>{</span>
+            "Sid": "awspcaissuer",
+            "Action": [
+                "acm-pca:DescribeCertificateAuthority",
+                "acm-pca:GetCertificate",
+                "acm-pca:IssueCertificate"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:acm-pca:us-west-2:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"
+        }
+    ]
+}</code></pre>
+            <p>
+               <a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html">Service
+Roles for IAM Accounts, or IRSA</a> can also be used. Please see the
+Additional Resources section below for complete examples.</p>
+            <p>Create an Issuer in Amazon EKS by creating a Custom Resource Definition
+file named cluster-issuer.yaml with the following text in it, replacing
+<code class="code">&lt;CA_ARN&gt;</code> and <code class="code">&lt;Region&gt;</code> information with your Private CA.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: awspca.cert-manager.io/v1beta1
+kind: AWSPCAClusterIssuer
+metadata:
+          name: demo-test-root-ca
+spec:
+          arn: &lt;CA_ARN&gt;
+          region: &lt;Region&gt;</code></pre>
+            <p>Deploy the Issuer you created.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">kubectl apply -f cluster-issuer.yaml</code></pre>
+            <p>Your EKS cluster is configured to request certificates from Private CA.
+You can now use cert-manager’s <code class="code">Certificate</code> resource to issue
+certificates by changing the <code class="code">issuerRef</code> field’s values to the Private
+CA Issuer you created above. For more details on how to specify and
+request Certificate resources, please check cert-manager’s
+<a href="https://cert-manager.io/docs/usage/certificate/" rel="noopener noreferrer" target="_blank"><span>Certificate Resources
+guide</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.
+<a href="https://github.com/cert-manager/aws-privateca-issuer/tree/main/config/samples/" rel="noopener noreferrer" target="_blank"><span>See
+examples here</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+          
+       
+       
+         <h3 id="_acm_private_ca_with_istio_and_cert_manager">ACM Private CA with Istio and cert-manager</h3>
+         <p>If you are running Istio in your EKS cluster, you can disable the Istio
+control plane (specifically <code class="code">istiod</code>) from functioning as the root
+Certificate Authority (CA), and configure ACM Private CA as the root CA
+for mTLS between workloads. If you’re going with this approach, consider
+using the <em>short-lived CA mode</em> in ACM Private CA. Refer to the
+<a href="#iam-ca-mode">previous
+section</a> and this
+<a href="https://aws.amazon.com/blogs/security/how-to-use-aws-private-certificate-authority-short-lived-certificate-mode" rel="noopener noreferrer" target="_blank"><span>blog
+post</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> for more details.</p>
+          
+            <h4 id="_how_certificate_signing_works_in_istio_default">How Certificate Signing Works in Istio (Default)</h4>
+            <p>Workloads in Kubernetes are identified using service accounts. If you
+don’t specify a service account, Kubernetes will automatically assign
+one to your workload. Also, service accounts automatically mount an
+associated token. This token is used by the service account for
+workloads to authenticate against the Kubernetes API. The service
+account may be sufficient as an identity for Kubernetes but Istio has
+its own identity management system and CA. When a workload starts up
+with its envoy sidecar proxy, it needs an identity assigned from Istio
+in order for it to be deemed as trustworthy and allowed to communicate
+with other services in the mesh.</p>
+            <p>To get this identity from Istio, the <code class="code">istio-agent</code> sends a request
+known as a certificate signing request (or CSR) to the Istio control
+plane. This CSR contains the service account token so that the
+workload’s identity can be verified before being processed. This
+verification process is handled by <code class="code">istiod</code>, which acts as both the
+Registration Authority (or RA) and the CA. The RA serves as a gatekeeper
+that makes sure only verified CSR makes it through to the CA. Once the
+CSR is verified, it will be forwarded to the CA which will then issue a
+certificate containing a <a href="https://spiffe.io/" rel="noopener noreferrer" target="_blank"><span>SPIFFE</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> identity with the
+service account. This certificate is called a SPIFFE verifiable identity
+document (or SVID). The SVID is assigned to the requesting service for
+identification purposes and to encrypt the traffic in transit between
+the communicating services.</p>
+            <p>Default flow for Istio Certificate Signing Requests:</p>
+            <div class="mediaobject">
+                
+                  <img src="/images/eks/latest/best-practices/images/security/default-istio-csr-flow.png" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="Default flow for Istio Certificate Signing Requests" />
+                
+                
+            </div>
+          
+          
+            <h4 id="_how_certificate_signing_works_in_istio_with_acm_private_ca">How Certificate Signing Works in Istio with ACM Private CA</h4>
+            <p>You can use a cert-manager add-on called the Istio Certificate Signing
+Request agent
+(<a href="https://cert-manager.io/docs/projects/istio-csr/" rel="noopener noreferrer" target="_blank"><span>istio-csr</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>) to
+integrate Istio with ACM Private CA. This agent allows Istio workloads
+and control plane components to be secured with cert manager issuers, in
+this case ACM Private CA. The <em>istio-csr</em> agent exposes the same service
+that <em>istiod</em> serves in the default config of validating incoming CSRs.
+Except, after verification, it will convert the requests into resources
+that cert manager supports (i.e. integrations with external CA issuers).</p>
+            <p>Whenever there’s a CSR from a workload, it will be forwarded to
+<em>istio-csr</em>, which will request certificates from ACM Private CA. This
+communication between <em>istio-csr</em> and ACM Private CA is enabled by the
+<a href="https://github.com/cert-manager/aws-privateca-issuer" rel="noopener noreferrer" target="_blank"><span>AWS Private CA
+issuer plugin</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Cert manager uses this plugin to request TLS
+certificates from ACM Private CA. The issuer plugin will communicate
+with the ACM Private CA service to request a signed certificate for the
+workload. Once the certificate has been signed, it will be returned to
+<em>istio-csr</em>, which will read the signed request, and return it to the
+workload that initiated the CSR.</p>
+             
+               <h6>Flow for Istio Certificate Signing Requests with istio-csr</h6>
+               <p>image::istio-csr-with-acm-private-ca.png[Flow for Istio
+Certificate Signing Requests with istio-csr]</p>
+             
+          
+          
+            <h4 id="_istio_with_private_ca_setup_instructions">Istio with Private CA Setup Instructions</h4>
+            <div class="orderedlist">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            <ol style="list-style-type:arabic ! important;"><li>
+                  <p>Start by following the same
+<a href="#iam-cert-manager">setup instructions in this
+section</a> to complete the following:</p>
+               </li><li>
+                  <p>Create a Private CA</p>
+               </li><li>
+                  <p>Install cert-manager</p>
+               </li><li>
+                  <p>Install the issuer plugin</p>
+               </li><li>
+                  <p>Set permissions and create an issuer. The issuer represents the CA and
+is used to sign <code class="code">istiod</code> and mesh workload certificates. It will
+communicate with ACM Private CA.</p>
+               </li><li>
+                  <p>Create an <code class="code">istio-system</code> namespace. This is where the
+<code class="code">istiod certificate</code> and other Istio resources will be deployed.</p>
+               </li><li>
+                  <p>Install Istio CSR configured with AWS Private CA Issuer Plugin. You
+can preserve the certificate signing requests for workloads to verify
+that they get approved and signed
+(<code class="code">preserveCertificateRequests=true</code>).</p>
+                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">helm install -n cert-manager cert-manager-istio-csr jetstack/cert-manager-istio-csr \
+--set "app.certmanager.issuer.group=awspca.cert-manager.io" \
+--set "app.certmanager.issuer.kind=AWSPCAClusterIssuer" \
+--set "app.certmanager.issuer.name=&lt;the-name-of-the-issuer-you-created&gt;" \
+--set "app.certmanager.preserveCertificateRequests=true" \
+--set "app.server.maxCertificateDuration=48h" \
+--set "app.tls.certificateDuration=24h" \
+--set "app.tls.istiodCertificateDuration=24h" \
+--set "app.tls.rootCAFile=/var/run/secrets/istio-csr/ca.pem" \
+--set "volumeMounts[0].name=root-ca" \
+--set "volumeMounts[0].mountPath=/var/run/secrets/istio-csr" \
+--set "volumes[0].name=root-ca" \
+--set "volumes[0].secret.secretName=istio-root-ca"</code></pre>
+               </li><li>
+                  <p>Install Istio with custom configurations to replace <code class="code">istiod</code> with
+<code class="code">cert-manager istio-csr</code> as the certificate provider for the mesh.
+This process can be carried out using the
+<a href="https://tetrate.io/blog/what-is-istio-operator/" rel="noopener noreferrer" target="_blank"><span>Istio Operator</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio
+  namespace: istio-system
+spec:
+  profile: "demo"
+  hub: gcr.io/istio-release
+  values:
+  global:
+    # Change certificate provider to cert-manager istio agent for istio agent
+    caAddress: cert-manager-istio-csr.cert-manager.svc:443
+  components:
+    pilot:
+      k8s:
+        env:
+          # Disable istiod CA Sever functionality
+        - name: ENABLE_CA_SERVER
+          value: "false"
+        overlays:
+        - apiVersion: apps/v1
+          kind: Deployment
+          name: istiod
+          patches:
+
+            # Mount istiod serving and webhook certificate from Secret mount
+          - path: spec.template.spec.containers.[name:discovery].args[7]
+            value: "--tlsCertFile=/etc/cert-manager/tls/tls.crt"
+          - path: spec.template.spec.containers.[name:discovery].args[8]
+            value: "--tlsKeyFile=/etc/cert-manager/tls/tls.key"
+          - path: spec.template.spec.containers.[name:discovery].args[9]
+            value: "--caCertFile=/etc/cert-manager/ca/root-cert.pem"
+
+          - path: spec.template.spec.containers.[name:discovery].volumeMounts[6]
+            value:
+              name: cert-manager
+              mountPath: "/etc/cert-manager/tls"
+              readOnly: true
+          - path: spec.template.spec.containers.[name:discovery].volumeMounts[7]
+            value:
+              name: ca-root-cert
+              mountPath: "/etc/cert-manager/ca"
+              readOnly: true
+
+          - path: spec.template.spec.volumes[6]
+            value:
+              name: cert-manager
+              secret:
+                secretName: istiod-tls
+          - path: spec.template.spec.volumes[7]
+            value:
+              name: ca-root-cert
+              configMap:
+                defaultMode: 420
+                name: istio-ca-root-cert</code></pre>
+               </li><li>
+                  <p>Deploy the above custom resource you created.</p>
+                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">istioctl operator init
+kubectl apply -f istio-custom-config.yaml</code></pre>
+               </li><li>
+                  <p>Now you can deploy a workload to the mesh in your EKS cluster and
+<a href="https://istio.io/latest/docs/reference/config/security/peer_authentication/" rel="noopener noreferrer" target="_blank"><span>enforce
+mTLS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+               </li></ol></div>
+             
+               <h6>Istio certificate signing requests</h6>
+               <p>image::istio-csr-requests.png[Istio certificate signing
+requests]</p>
+             
+          
+       
+    
+      <h2 id="_tools_and_resources">Tools and resources</h2>
+      <div class="itemizedlist">
+          
+          
+          
+          
+          
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>
+               <a href="https://catalog.workshops.aws/eks-security-immersionday/en-US/6-network-security" rel="noopener noreferrer" target="_blank"><span>Amazon
+EKS Security Immersion Workshop - Network security</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/" rel="noopener noreferrer" target="_blank"><span>How
+to implement cert-manager and the ACM Private CA plugin to enable TLS in
+EKS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/" rel="noopener noreferrer" target="_blank"><span>Setting
+up end-to-end TLS encryption on Amazon EKS with the new AWS Load
+Balancer Controller and ACM Private CA</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://github.com/cert-manager/aws-privateca-issuer" rel="noopener noreferrer" target="_blank"><span>Private CA
+Kubernetes cert-manager plugin on GitHub</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaKubernetes.html">Private
+CA Kubernetes cert-manager plugin user guide</a>.</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://aws.amazon.com/blogs/security/how-to-use-aws-private-certificate-authority-short-lived-certificate-mode" rel="noopener noreferrer" target="_blank"><span>How
+to use AWS Private Certificate Authority short-lived certificate mode</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://github.com/monzo/egress-operator" rel="noopener noreferrer" target="_blank"><span>egress-operator</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> An operator
+and DNS plugin to control egress traffic from your cluster without
+protocol inspection</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.suse.com/neuvector/" rel="noopener noreferrer" target="_blank"><span>NeuVector by SUSE</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> open source,
+zero-trust container security platform, provides policy network rules,
+data loss prevention (DLP), web application firewall (WAF) and network
+threat signatures.</p>
+         </li></ul></div>
+   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./auditing-and-logging.html">Detective Controls</div><div id="next" class="next-link" accesskey="n" href="./data-encryption-and-secrets-management.html">Data encryption and secrets management</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/network-security.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/network-security.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

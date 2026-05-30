@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "kubescape_security_docs",
+  "item_id": "docs_frameworks_and_controls",
+  "url": "https://kubescape.io/docs/frameworks-and-controls/",
+  "requested_url": "https://kubescape.io/docs/frameworks-and-controls/",
+  "fetched_at": "2026-05-27T19:28:39Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "954c00bdb589b6f80e1190dbb46537e9c8657eac897286b2bf443c9d160f3890",
+  "byte_size": 47628,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/kubescape_security_docs/2026-05-27T192816Z/docs_frameworks_and_controls/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "696",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "7609",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:28:39 GMT",
+    "Etag": "\"703c6371af9b16cc10c5f55becca0ae6-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNEJ482DT5AQV0BY766YMX8"
+  }
+}

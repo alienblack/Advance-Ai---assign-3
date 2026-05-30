@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_access_control_docs",
+  "item_id": "docs_reference_access_authn_authz_kubelet_tls_bootstrapping",
+  "url": "https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/",
+  "requested_url": "https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/",
+  "fetched_at": "2026-05-27T18:58:57Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "01f11f5bc7f0e7e16ef41c18589d2fe86fcd3c1aa0c9283264d6509235a7c9c6",
+  "byte_size": 522449,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_access_control_docs/2026-05-27T185849Z/docs_reference_access_authn_authz_kubelet_tls_bootstrapping/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "3574",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "51401",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:57 GMT",
+    "Etag": "\"e3888e5bae668f8bcc7627bee333038c-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVQFKGD2KTQ2TX8X7Y11E"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_service_accounts",
+  "url": "https://kubernetes.io/docs/concepts/security/service-accounts/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/service-accounts/",
+  "fetched_at": "2026-05-27T19:28:16Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "193d2cafc2bbe03f8dd4e8fe9d4ec28760226d9ac4c26858d3d89253306f6834",
+  "byte_size": 504741,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T192816Z/docs_concepts_security_service_accounts/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "5684",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "49200",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:28:16 GMT",
+    "Etag": "\"6c9ff4436768bc70fcf739e7f9d14c65-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNEHDQZC66FQ3KTAPSMNN6K"
+  }
+}

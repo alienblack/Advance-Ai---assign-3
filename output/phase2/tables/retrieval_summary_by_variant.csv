@@ -1,0 +1,4 @@
+variant,retrieval_mode,num_rows,num_queries,avg_similarity,avg_rerank,unique_sources
+V1,baseline_dense_top3,300,100,0.631159616013368,0.631159616013368,12
+V2,improved_dense_mmr_top3,300,100,0.628899615208308,0.628899615208308,12
+V3,intent_enriched_dense_mmr_top3,300,100,0.7832256742318471,0.8032923408985139,7

@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_access_control_docs",
+  "item_id": "docs_reference_access_authn_authz_authentication",
+  "url": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/",
+  "requested_url": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/",
+  "fetched_at": "2026-05-27T18:58:54Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "e505ce54c4b8dc69cd35982f643eac1b20ccbe30f4c8ca33c87609cf1c1b5231",
+  "byte_size": 726769,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_access_control_docs/2026-05-27T185849Z/docs_reference_access_authn_authz_authentication/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "3687",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "74046",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:54 GMT",
+    "Etag": "\"4681cdce1207d6b464453d7349d39d94-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVN7BQACMNSPGKWS9NBH9"
+  }
+}

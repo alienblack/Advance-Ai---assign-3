@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T191537Z",
+  "source_id": "kubescape_security_docs",
+  "item_id": "docs_operator",
+  "url": "https://kubescape.io/docs/operator/",
+  "requested_url": "https://kubescape.io/docs/operator/",
+  "fetched_at": "2026-05-27T19:17:06Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "f5081eef7b58f65e505f7c3baefdb55a0082ef2a6cf91fcc54aeb53dfa51a19e",
+  "byte_size": 54327,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/kubescape_security_docs/2026-05-27T191537Z/docs_operator/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "0",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; fwd=miss",
+    "Content-Encoding": "br",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:17:06 GMT",
+    "Etag": "\"409460ba3ee751efaf09944ad7d88c32-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNDWZ0V8RZ4BSHR6T9N12SC",
+    "Transfer-Encoding": "chunked"
+  }
+}

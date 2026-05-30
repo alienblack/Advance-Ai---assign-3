@@ -1,0 +1,4 @@
+difficulty,num_cases,context_relevance,answer_relevance,faithfulness,context_precision,context_recall,bertscore_p,bertscore_r,bertscore_f1
+advanced,60,,,,,,0.5873792012532552,0.6049612353245417,0.5954718083143234
+basic,90,,,,,,0.6281988971763187,0.6434912065664927,0.6348986281288995
+intermediate,150,,,,,,0.5964976467688878,0.6113459177811941,0.6032653522491455

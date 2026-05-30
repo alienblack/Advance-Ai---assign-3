@@ -1,0 +1,6 @@
+query_id,variant,context_relevance,answer_relevance,faithfulness,context_precision,context_recall,ragas_error
+Q001,V1,,,,,,RagasOutputParserException: The output parser failed to parse the output including retries.
+Q001,V2,,,,,,RagasOutputParserException: The output parser failed to parse the output including retries.
+Q001,V3,,,,,,RagasOutputParserException: The output parser failed to parse the output including retries.
+Q002,V1,,,,,,RagasOutputParserException: The output parser failed to parse the output including retries.
+Q002,V2,,,,,,RagasOutputParserException: The output parser failed to parse the output including retries.

@@ -1,0 +1,10 @@
+{
+  "active_variants": [
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "num_ragas_rows": 300,
+  "ragas_judge_model": "gpt-4.1-mini",
+  "ragas_embedding_model": "text-embedding-3-small"
+}

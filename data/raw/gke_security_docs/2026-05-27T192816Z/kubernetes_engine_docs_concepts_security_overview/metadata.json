@@ -1,0 +1,31 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "gke_security_docs",
+  "item_id": "kubernetes_engine_docs_concepts_security_overview",
+  "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/security-overview",
+  "requested_url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/security-overview",
+  "fetched_at": "2026-05-27T19:28:38Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=utf-8",
+  "encoding": "utf-8",
+  "sha256": "b311e6b0f412dd710f41fd3528bfdb628ec629ec7c0a11c85c48bfd8e3548afc",
+  "byte_size": 150718,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/gke_security_docs/2026-05-27T192816Z/kubernetes_engine_docs_concepts_security_overview/body.html",
+  "headers": {
+    "last-modified": "Wed, 20 May 2026 21:10:45 GMT",
+    "content-type": "text/html; charset=utf-8",
+    "vary": "Cookie, Accept-Encoding",
+    "content-security-policy": "base-uri 'self'; object-src 'none'; script-src 'strict-dynamic' 'unsafe-inline' https: http: 'nonce-HXW0WoyHzFHHRYDmA9QvJsGv9Thcsa' 'unsafe-eval'; frame-ancestors 'self' https://developers.google.com/_d/analytics-iframe; report-uri https://csp.withgoogle.com/csp/devsite/v2",
+    "strict-transport-security": "max-age=63072000; includeSubdomains; preload",
+    "x-xss-protection": "0",
+    "x-content-type-options": "nosniff",
+    "cache-control": "no-cache, must-revalidate",
+    "expires": "0",
+    "pragma": "no-cache",
+    "content-encoding": "gzip",
+    "x-cloud-trace-context": "a9a113b492d1993b99a2a49b719bcf7a",
+    "date": "Wed, 27 May 2026 19:28:37 GMT",
+    "server": "Google Frontend",
+    "Transfer-Encoding": "chunked"
+  }
+}

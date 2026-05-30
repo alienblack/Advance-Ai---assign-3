@@ -1,0 +1,5 @@
+variant,model_name,num_cases,context_relevance_mean,context_relevance_std,answer_relevance_mean,answer_relevance_std,faithfulness_mean,faithfulness_std,ragas_composite_mean,ragas_composite_std,error_count,win_count
+QW_V1,Qwen2.5-3B-Instruct,10,,,,,,,,,10,0
+QW_V3,Qwen2.5-3B-Instruct,10,,,,,,,,,10,0
+V1,Gemma-2-2B-IT,10,,,,,,,,,10,0
+V3,Gemma-2-2B-IT,10,,,,,,,,,10,0

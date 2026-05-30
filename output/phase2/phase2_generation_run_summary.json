@@ -1,0 +1,14 @@
+{
+  "run_generation": true,
+  "active_variants": [
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "num_rows": 300,
+  "num_cases": 300,
+  "num_models_used": 1,
+  "case_limit": null,
+  "max_new_tokens": 180,
+  "use_4bit_if_cuda": false
+}

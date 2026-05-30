@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Incident response and forensics - Amazon EKS</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="incident-response-and-forensics" /><meta name="default_state" content="incident-response-and-forensics" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/eks/latest/best-practices/incident-response-and-forensics.html" /><meta name="description" content="Your ability to react quickly to an incident can help minimize damage caused from a breach. Having a reliable alerting system that can warn you of suspicious behavior is the first step in a good incident response plan. When an incident does arise, you have to quickly decide whether to destroy and replace the effected container, or isolate and inspect the container. If you choose to isolate the container as part of a forensic investigation and root cause analysis, then the following set of activities should be followed:" /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon EKS" /><meta name="guide" content="Best Practices Guide" /><meta name="abstract" content="Learn best practices for operating EKS clusters." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/eks/latest/best-practices/incident-response-and-forensics.html" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="id-id" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="id" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="de-de" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="de" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="en-us" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="en" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="es-es" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="es" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="fr-fr" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="fr" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="it-it" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="it" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="ja-jp" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="ja" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="ko-kr" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="ko" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="pt-br" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="pt" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_cn/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="zh-cn" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_tw/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="zh-tw" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/incident-response-and-forensics.html" hreflang="x-default" /><meta name="feedback-item" content="Amazon EKS" /><meta name="this_doc_product" content="Amazon EKS" /><meta name="this_doc_guide" content="Best Practices Guide" /><head xmlns="http://www.w3.org/1999/xhtml"> <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js"></script><link href="/assets/r/awsdocs-doc-page.2.0.0.css" rel="stylesheet"/></head>
+<script defer="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'eks'}"></script><meta id="panorama-serviceSubSection" value="Best Practices Guide" /><meta id="panorama-serviceConsolePage" value="Incident response and forensics" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><p><a href="incident-response-and-forensics.md">View a markdown version of this page</a></p><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Incident response and forensics - Amazon EKS</title><meta name="pdf" content="/pdfs/eks/latest/best-practices/eks-bpg.pdf#incident-response-and-forensics" /><meta name="github" content="https://github.com/aws/aws-eks-best-practices/tree/master/latest/bpg/security/incidents.adoc" /><meta name="forums" content="https://repost.aws/tags/TA4IvCeWI1TE66q4jEj4Z9zg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon%20EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/incident-response-and-forensics.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/incident-response-and-forensics.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/incident-response-and-forensics.html" /><link rel="alternate" type="text/markdown" href="incident-response-and-forensics.md" title="Markdown version" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon EKS",
+        "item" : "https://docs.aws.amazon.com/eks/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Best Practices Guide",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Best Practices for Security",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Incident response and forensics",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices/security.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/eks/latest/best-practices/eks-bpg.pdf#incident-response-and-forensics" target="_blank" rel="noopener noreferrer" title="Open PDF"></a><a href="https://github.com/aws/aws-eks-best-practices/tree/master/latest/bpg/security/incidents.adoc" target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="/index.html">Documentation</a><a href="/eks/index.html">Amazon EKS</a><a href="introduction.html">Best Practices Guide</a></div><div id="page-toc-src"><a href="#_sample_incident_response_plan">Sample incident response plan</a><a href="#_recommendations">Recommendations</a><a href="#_tools_and_resources">Tools and resources</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="incident-response-and-forensics">Incident response and forensics</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Your ability to react quickly to an incident can help minimize damage
+caused from a breach. Having a reliable alerting system that can warn
+you of suspicious behavior is the first step in a good incident response
+plan. When an incident does arise, you have to quickly decide whether to
+destroy and replace the effected container, or isolate and inspect the
+container. If you choose to isolate the container as part of a forensic
+investigation and root cause analysis, then the following set of
+activities should be followed:</p>
+      <h2 id="_sample_incident_response_plan">Sample incident response plan</h2>
+       
+         <h3 id="_identify_the_offending_pod_and_worker_node">Identify the offending Pod and worker node</h3>
+         <p>Your first course of action should be to isolate the damage. Start by
+identifying where the breach occurred and isolate that Pod and its node
+from the rest of the infrastructure.</p>
+       
+       
+         <h3 id="_identify_the_offending_pods_and_worker_nodes_using_workload_name">Identify the offending Pods and worker nodes using workload name</h3>
+         <p>If you know the name and namespace of the offending pod, you can
+identify the worker node running the pod as follows:</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">kubectl get pods &lt;name&gt; --namespace &lt;namespace&gt; -o=jsonpath='<span>{</span>.spec.nodeName}<span>{</span>"\n"}'</code></pre>
+         <p>If a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/" rel="noopener noreferrer" target="_blank"><span>Workload
+Resource</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> such as a Deployment has been compromised, it is likely that
+all the pods that are part of the workload resource are compromised. Use
+the following command to list all the pods of the Workload Resource and
+the nodes they are running on:</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">selector=$(kubectl get deployments &lt;name&gt; \
+ --namespace &lt;namespace&gt; -o json | jq -j \
+'.spec.selector.matchLabels | to_entries | .[] | "\(.key)=\(.value)"')
+
+kubectl get pods --namespace &lt;namespace&gt; --selector=$selector \
+-o json | jq -r '.items[] | "\(.metadata.name) \(.spec.nodeName)"'</code></pre>
+         <p>The above command is for deployments. You can run the same command for
+other workload resources such as replicasets,, statefulsets, etc.</p>
+       
+       
+         <h3 id="_identify_the_offending_pods_and_worker_nodes_using_service_account_name">Identify the offending Pods and worker nodes using service account name</h3>
+         <p>In some cases, you may identify that a service account is compromised.
+It is likely that pods using the identified service account are
+compromised. You can identify all the pods using the service account and
+nodes they are running on with the following command:</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">kubectl get pods -o json --namespace &lt;namespace&gt; | \
+    jq -r '.items[] |
+    select(.spec.serviceAccount == "&lt;service account name&gt;") |
+    "\(.metadata.name) \(.spec.nodeName)"'</code></pre>
+       
+       
+         <h3 id="_identify_pods_with_vulnerable_or_compromised_images_and_worker_nodes">Identify Pods with vulnerable or compromised images and worker nodes</h3>
+         <p>In some cases, you may discover that a container image being used in
+pods on your cluster is malicious or compromised. A container image is
+malicious or compromised, if it was found to contain malware, is a known
+bad image or has a CVE that has been exploited. You should consider all
+the pods using the container image compromised. You can identify the
+pods using the image and nodes they are running on with the following
+command:</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash ">IMAGE=&lt;Name of the malicious/compromised image&gt;
+
+kubectl get pods -o json --all-namespaces | \
+    jq -r --arg image "$IMAGE" '.items[] |
+    select(.spec.containers[] | .image == $image) |
+    "\(.metadata.name) \(.metadata.namespace) \(.spec.nodeName)"'</code></pre>
+       
+       
+         <h3 id="_isolate_the_pod_by_creating_a_network_policy_that_denies_all_ingress_and_egress_traffic_to_the_pod">Isolate the Pod by creating a Network Policy that denies all ingress and egress traffic to the pod</h3>
+         <p>A deny all traffic rule may help stop an attack that is already underway
+by severing all connections to the pod. The following Network Policy
+will apply to a pod with the label <code class="code">app=web</code>.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (yaml)--><code class="yaml ">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+spec:
+  podSelector:
+    matchLabels:
+      app: web
+  policyTypes:
+  - Ingress
+  - Egress</code></pre>
+         <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>A Network Policy may prove ineffective if an attacker has gained access to underlying host. If you suspect that has happened, you can use <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html">AWS Security Groups</a> to isolate a compromised host from other hosts. When changing a host’s security group, be aware that it will impact all containers running on that host.</p></div></div>
+       
+       
+         <h3 id="_revoke_temporary_security_credentials_assigned_to_the_pod_or_worker_node_if_necessary">Revoke temporary security credentials assigned to the pod or worker node if necessary</h3>
+         <p>If the worker node has been assigned an IAM role that allows Pods to
+gain access to other AWS resources, remove those roles from the instance
+to prevent further damage from the attack. Similarly, if the Pod has
+been assigned an IAM role, evaluate whether you can safely remove the
+IAM policies from the role without impacting other workloads.</p>
+       
+       
+         <h3 id="_cordon_the_worker_node">Cordon the worker node</h3>
+         <p>By cordoning the impacted worker node, you’re informing the scheduler to
+avoid scheduling pods onto the affected node. This will allow you to
+remove the node for forensic study without disrupting other workloads.</p>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This guidance is not applicable to Fargate where each Fargate pod run in its own sandboxed environment. Instead of cordoning, sequester the affected Fargate pods by applying a network policy that denies all ingress and egress traffic.</p></div></div>
+       
+       
+         <h3 id="_enable_termination_protection_on_impacted_worker_node">Enable termination protection on impacted worker node</h3>
+         <p>An attacker may attempt to erase their misdeeds by terminating an
+affected node. Enabling
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination">termination
+protection</a> can prevent this from happening.
+<a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection">Instance
+scale-in protection</a> will protect the node from a scale-in event.</p>
+         <div class="awsdocs-note awsdocs-warning"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Warning</h6></div><div class="awsdocs-note-text"><p>You cannot enable termination protection on a Spot instance.</p></div></div>
+       
+       
+         <h3 id="_label_the_offending_podnode_with_a_label_indicating_that_it_is_part_of_an_active_investigation">Label the offending Pod/Node with a label indicating that it is part of an active investigation</h3>
+         <p>This will serve as a warning to cluster administrators not to tamper
+with the affected Pods/Nodes until the investigation is complete.</p>
+       
+       
+         <h3 id="_capture_volatile_artifacts_on_the_worker_node">Capture volatile artifacts on the worker node</h3>
+         <div class="itemizedlist">
+             
+             
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <strong>Capture the operating system memory</strong>. This will capture the Docker
+daemon (or other container runtime) and its subprocesses per container.
+This can be accomplished using tools like
+<a href="https://github.com/504ensicsLabs/LiME" rel="noopener noreferrer" target="_blank"><span>LiME</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> and
+<a href="https://www.volatilityfoundation.org/" rel="noopener noreferrer" target="_blank"><span>Volatility</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, or through
+higher-level tools such as
+<a href="https://aws.amazon.com/solutions/implementations/automated-forensics-orchestrator-for-amazon-ec2/" rel="noopener noreferrer" target="_blank"><span>Automated
+Forensics Orchestrator for Amazon EC2</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> that build on top of them.</p>
+            </li><li class="listitem">
+               <p>
+                  <strong>Perform a netstat tree dump of the processes running and the open
+ports</strong>. This will capture the docker daemon and its subprocess per
+container.</p>
+            </li><li class="listitem">
+               <p>
+                  <strong>Run commands to save container-level state before evidence is
+altered</strong>. You can use capabilities of the container runtime to capture
+information about currently running containers. For example, with
+Containerd, you could do the following:</p>
+               <div class="itemizedlist">
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>
+                        <code class="code">crictl ps</code> for processes running.</p>
+                  </li><li class="listitem">
+                     <p>
+                        <code class="code">crictl logs CONTAINER</code> for daemon level held logs.</p>
+                     <p>The same could be achieved with containerd using the
+<a href="https://github.com/containerd/nerdctl" rel="noopener noreferrer" target="_blank"><span>nerdctl</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> CLI, in place of
+<code class="code">docker</code> (e.g. <code class="code">nerdctl inspect</code>). Some additional commands are
+available depending on the container runtime. For example, Docker has
+<code class="code">docker diff</code> to see changes to the container filesystem or
+<code class="code">docker checkpoint</code> to save all container state including volatile
+memory (RAM). See
+<a href="https://kubernetes.io/blog/2022/12/05/forensic-container-checkpointing-alpha/" rel="noopener noreferrer" target="_blank"><span>this
+Kubernetes blog post</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> for discussion of similar capabilities with
+containerd or CRI-O runtimes.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p>
+                  <strong>Pause the container for forensic capture</strong>.</p>
+            </li><li class="listitem">
+               <p>
+                  <strong>Snapshot the instance’s EBS volumes</strong>.</p>
+            </li></ul></div>
+       
+       
+         <h3 id="_redeploy_compromised_pod_or_workload_resource">Redeploy compromised Pod or Workload Resource</h3>
+         <p>Once you have gathered data for forensic analysis, you can redeploy the
+compromised pod or workload resource.</p>
+         <p>First roll out the fix for the vulnerability that was compromised and
+start new replacement pods. Then delete the vulnerable pods.</p>
+         <p>If the vulnerable pods are managed by a higher-level Kubernetes workload
+resource (for example, a Deployment or DaemonSet), deleting them will
+schedule new ones. So vulnerable pods will be launched again. In that
+case you should deploy a new replacement workload resource after fixing
+the vulnerability. Then you should delete the vulnerable workload.</p>
+       
+    
+      <h2 id="_recommendations">Recommendations</h2>
+       
+         <h3 id="_review_the_aws_security_incident_response_whitepaper">Review the AWS Security Incident Response Whitepaper</h3>
+         <p>While this section gives a brief overview along with a few
+recommendations for handling suspected security breaches, the topic is
+exhaustively covered in the white paper,
+<a href="https://docs.aws.amazon.com/whitepapers/latest/aws-security-incident-response-guide/welcome.html">AWS
+Security Incident Response</a>.</p>
+       
+       
+         <h3 id="_practice_security_game_days">Practice security game days</h3>
+         <p>Divide your security practitioners into 2 teams: red and blue. The red
+team will be focused on probing different systems for vulnerabilities
+while the blue team will be responsible for defending against them. If
+you don’t have enough security practitioners to create separate teams,
+consider hiring an outside entity that has knowledge of Kubernetes
+exploits.</p>
+         <p>
+            <a href="https://github.com/cyberark/kubesploit" rel="noopener noreferrer" target="_blank"><span>Kubesploit</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> is a penetration
+testing framework from CyberArk that you can use to conduct game days.
+Unlike other tools which scan your cluster for vulnerabilities,
+kubesploit simulates a real-world attack. This gives your blue team an
+opportunity to practice its response to an attack and gauge its
+effectiveness.</p>
+       
+       
+         <h3 id="_run_penetration_tests_against_your_cluster">Run penetration tests against your cluster</h3>
+         <p>Periodically attacking your own cluster can help you discover
+vulnerabilities and misconfigurations. Before getting started, follow
+the <a href="https://aws.amazon.com/security/penetration-testing/" rel="noopener noreferrer" target="_blank"><span>penetration
+test guidelines</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> before conducting a test against your cluster.</p>
+       
+    
+      <h2 id="_tools_and_resources">Tools and resources</h2>
+      <div class="itemizedlist">
+          
+          
+          
+          
+          
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>
+               <a href="https://github.com/aquasecurity/kube-hunter" rel="noopener noreferrer" target="_blank"><span>kube-hunter</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, a
+penetration testing tool for Kubernetes.</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.gremlin.com/product/#kubernetes" rel="noopener noreferrer" target="_blank"><span>Gremlin</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, a chaos
+engineering toolkit that you can use to simulate attacks against your
+applications and infrastructure.</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://github.com/kubernetes/sig-security/blob/main/sig-security-external-audit/security-audit-2019/findings/AtredisPartners_Attacking_Kubernetes-v1.0.pdf" rel="noopener noreferrer" target="_blank"><span>Attacking
+and Defending Kubernetes Installations</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.cyberark.com/resources/threat-research-blog/kubesploit-a-new-offensive-tool-for-testing-containerized-environments" rel="noopener noreferrer" target="_blank"><span>kubesploit</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.suse.com/neuvector/" rel="noopener noreferrer" target="_blank"><span>NeuVector by SUSE</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> open source,
+zero-trust container security platform, provides vulnerability- and risk
+reporting as well as security event notification</p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.youtube.com/watch?v=CH7S5rE3j8w" rel="noopener noreferrer" target="_blank"><span>Advanced Persistent
+Threats</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.youtube.com/watch?v=LtCx3zZpOfs" rel="noopener noreferrer" target="_blank"><span>Kubernetes Practical
+Attack and Defense</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://www.youtube.com/watch?v=1LMo0CftVC4" rel="noopener noreferrer" target="_blank"><span>Compromising Kubernetes
+Cluster by Exploiting RBAC Permissions</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+            </p>
+         </li></ul></div>
+   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./compliance.html">Regulatory Compliance</div><div id="next" class="next-link" accesskey="n" href="./image-security.html">Image security</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/incident-response-and-forensics.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/incident-response-and-forensics.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

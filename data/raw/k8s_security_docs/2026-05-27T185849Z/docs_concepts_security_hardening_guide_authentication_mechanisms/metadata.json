@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_hardening_guide_authentication_mechanisms",
+  "url": "https://kubernetes.io/docs/concepts/security/hardening-guide/authentication-mechanisms/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/hardening-guide/authentication-mechanisms/",
+  "fetched_at": "2026-05-27T18:58:52Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "b97334d3d59f2e67795071ced83a84acaebb15b76611cb3be0666263be33345c",
+  "byte_size": 490720,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T185849Z/docs_concepts_security_hardening_guide_authentication_mechanisms/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; fwd=stale",
+    "Content-Encoding": "br",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:52 GMT",
+    "Etag": "\"dcd21c4cf201291d13dd345d81341720-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVJBJ7ZCSFSA5VJY05B7S",
+    "Transfer-Encoding": "chunked"
+  }
+}

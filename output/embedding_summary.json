@@ -1,0 +1,6 @@
+{
+  "model_name": "all-MiniLM-L6-v2",
+  "batch_size": 32,
+  "num_vectors": 2093,
+  "vector_dim": 384
+}

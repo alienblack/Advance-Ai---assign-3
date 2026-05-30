@@ -1,0 +1,20 @@
+{
+  "run_generation": true,
+  "base_variants": [
+    "V1",
+    "V3"
+  ],
+  "output_variants": [
+    "QW_V1",
+    "QW_V3"
+  ],
+  "model_name": "Qwen2.5-3B-Instruct",
+  "hf_model_id": "Qwen/Qwen2.5-3B-Instruct",
+  "num_rows": 200,
+  "num_cases": 200,
+  "case_limit": null,
+  "max_new_tokens": 180,
+  "use_4bit_if_cuda": false,
+  "generation_cases_file": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/output/phase2/tables/generation_cases_qwen_v1_v3.csv",
+  "generation_results_file": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/output/phase2/tables/generation_results_qwen_v1_v3.csv"
+}

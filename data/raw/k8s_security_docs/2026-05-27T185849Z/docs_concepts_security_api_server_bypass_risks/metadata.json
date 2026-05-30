@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_api_server_bypass_risks",
+  "url": "https://kubernetes.io/docs/concepts/security/api-server-bypass-risks/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/api-server-bypass-risks/",
+  "fetched_at": "2026-05-27T18:58:53Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "f7c8f0046d2c6827253ea0f6d450794bd606212b327c2e1d94eb23c6d5d546cb",
+  "byte_size": 490458,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T185849Z/docs_concepts_security_api_server_bypass_risks/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; fwd=stale",
+    "Content-Encoding": "br",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:53 GMT",
+    "Etag": "\"3f5f401a3b6f6fc7b4cbd34764aae427-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVKDE6TYJAW8XZCYBH4V4",
+    "Transfer-Encoding": "chunked"
+  }
+}

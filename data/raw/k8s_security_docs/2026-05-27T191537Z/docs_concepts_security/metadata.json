@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T191537Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security",
+  "url": "https://kubernetes.io/docs/concepts/security/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/",
+  "fetched_at": "2026-05-27T19:15:37Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "3e2b37f18d687661d4292fcaca027171d70e9277fac7b73fc9829adfa03f3da1",
+  "byte_size": 490432,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T191537Z/docs_concepts_security/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "4788",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "46095",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:15:37 GMT",
+    "Etag": "\"7a9b8c38eafabaec96f0eeff0f0e796f-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNDT8JZ2SJA14J4D9APGQ6C"
+  }
+}

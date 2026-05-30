@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_operational_security_docs",
+  "item_id": "docs_tasks_debug_debug_cluster_audit",
+  "url": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+  "requested_url": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+  "fetched_at": "2026-05-27T18:58:58Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "0c1ce6293ddc4989f1ff19bc195464fac20fc0233405b0e033adc8cdfee62b5a",
+  "byte_size": 520215,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_operational_security_docs/2026-05-27T185849Z/docs_tasks_debug_debug_cluster_audit/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "3674",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "49321",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:58 GMT",
+    "Etag": "\"e67057611cc4275d195edbebb3938fad-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVRRVW31VBZCE46A4Y9KF"
+  }
+}

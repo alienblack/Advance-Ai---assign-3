@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_application_security_checklist",
+  "url": "https://kubernetes.io/docs/concepts/security/application-security-checklist/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/application-security-checklist/",
+  "fetched_at": "2026-05-27T18:58:54Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "338ee475c8a716c36b15d08cd38738f915f46117cb5cc9f41363b8dcf886fecd",
+  "byte_size": 491013,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T185849Z/docs_concepts_security_application_security_checklist/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; fwd=miss",
+    "Content-Encoding": "br",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:54 GMT",
+    "Etag": "\"136d1c12e2998ae6737c48be7ea3171c-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVM3WZCAZ45X4FX6QWEYC",
+    "Transfer-Encoding": "chunked"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T191537Z",
+  "source_id": "cncf_cloud_native_security_whitepaper",
+  "item_id": "community_resources_security_whitepaper_v2_cncf_cloud_native_security_whitepaper_may2022_v2_pdf",
+  "url": "https://tag-security.cncf.io/community/resources/security-whitepaper/v2/CNCF_cloud-native-security-whitepaper-May2022-v2.pdf",
+  "requested_url": "https://tag-security.cncf.io/community/resources/security-whitepaper/v2/CNCF_cloud-native-security-whitepaper-May2022-v2.pdf",
+  "fetched_at": "2026-05-27T19:16:24Z",
+  "status_code": 200,
+  "content_type": "application/pdf",
+  "encoding": null,
+  "sha256": "6f7f12b75ae11277d3694b156ae7b0c33190aba644ac6122336ecede01b1fe1b",
+  "byte_size": 1545334,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/cncf_cloud_native_security_whitepaper/2026-05-27T191537Z/community_resources_security_whitepaper_v2_cncf_cloud_native_security_whitepaper_may2022_v2_pdf/body.pdf",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1043",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "1307883",
+    "Content-Type": "application/pdf",
+    "Date": "Wed, 27 May 2026 19:16:24 GMT",
+    "Etag": "\"039222602f6f5f7f65bdbb985d82578e-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNDVP7XFMW6HWXM1QVXTBGK"
+  }
+}

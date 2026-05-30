@@ -1,0 +1,11 @@
+topic,num_queries
+authentication_and_identity,10
+etcd_and_data_protection,10
+image_and_supply_chain_security,10
+logging_auditing_and_detection,10
+multi_tenancy_and_isolation,10
+network_policy_and_traffic_isolation,10
+pod_security_and_admission_control,10
+rbac_and_service_accounts,10
+secrets_handling,10
+vulnerability_management_and_incident_response,10

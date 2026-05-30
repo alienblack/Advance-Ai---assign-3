@@ -1,0 +1,14 @@
+{
+  "subset_rows": 40,
+  "completed_rows": 40,
+  "judge_model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "metrics": [
+    "context_relevance",
+    "answer_relevance",
+    "faithfulness"
+  ],
+  "checkpoint_every": 2,
+  "results_file": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/output/phase2/tables/ragas_results.csv",
+  "summary_file": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/output/phase2/tables/ragas_summary_by_variant.csv"
+}

@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_multi_tenancy",
+  "url": "https://kubernetes.io/docs/concepts/security/multi-tenancy/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/multi-tenancy/",
+  "fetched_at": "2026-05-27T19:28:16Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "10328d9e304c2ddbf08409d267e04fb9bdb8046cc2e8743d497706784d9d5580",
+  "byte_size": 515498,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T192816Z/docs_concepts_security_multi_tenancy/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "2334",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "53540",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:28:16 GMT",
+    "Etag": "\"da751792a0078e0999e29a0ddfb378fb-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNEHDWMTH9STMAZT0J9K2BF"
+  }
+}

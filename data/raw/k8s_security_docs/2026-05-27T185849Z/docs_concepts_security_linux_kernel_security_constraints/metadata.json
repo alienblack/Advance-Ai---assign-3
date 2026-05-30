@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T185849Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_linux_kernel_security_constraints",
+  "url": "https://kubernetes.io/docs/concepts/security/linux-kernel-security-constraints/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/linux-kernel-security-constraints/",
+  "fetched_at": "2026-05-27T18:58:51Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "09a36b35ebdd1fe7ba9cd2a981656fb5166a43029eb55c7563255a57d4dd34dc",
+  "byte_size": 497211,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T185849Z/docs_concepts_security_linux_kernel_security_constraints/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "4764",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "47835",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 18:58:51 GMT",
+    "Etag": "\"6b8882247645a63eef446ff470986339-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNCVJA8QZVQXP07VKG424MK"
+  }
+}

@@ -1,0 +1,6 @@
+Variant,Manual Quality Score,Unsupported Claim Rate,Redundancy Rate,No-Failure Rate
+V1,3.2,0.1,0.0,0.35
+V2,3.75,0.0,0.0,0.6
+V3,3.05,0.15,0.0,0.35
+QW_V1,3.75,0.3,0.1,0.55
+QW_V3,3.6,0.15,0.1,0.45

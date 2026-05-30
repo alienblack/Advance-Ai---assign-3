@@ -1,0 +1,11 @@
+topic_pretty,basic,intermediate,advanced
+Authentication And Identity,3,5,2
+Etcd And Data Protection,3,5,2
+Image And Supply Chain Security,3,5,2
+Logging Auditing And Detection,3,5,2
+Multi Tenancy And Isolation,3,5,2
+Network Policy And Traffic Isolation,3,5,2
+Pod Security And Admission Control,3,5,2
+Rbac And Service Accounts,3,5,2
+Secrets Handling,3,5,2
+Vulnerability Management And Incident Response,3,5,2

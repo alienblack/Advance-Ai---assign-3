@@ -1,0 +1,31 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "gke_security_docs",
+  "item_id": "kubernetes_engine_docs_how_to_hardening_your_cluster",
+  "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster",
+  "requested_url": "https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster",
+  "fetched_at": "2026-05-27T19:28:37Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=utf-8",
+  "encoding": "utf-8",
+  "sha256": "426b8f02e1d18e299cbc722d2f45760a5f1d8e47b9b473e32d61091a351dfe0a",
+  "byte_size": 190928,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/gke_security_docs/2026-05-27T192816Z/kubernetes_engine_docs_how_to_hardening_your_cluster/body.html",
+  "headers": {
+    "last-modified": "Tue, 26 May 2026 18:04:38 GMT",
+    "content-type": "text/html; charset=utf-8",
+    "vary": "Cookie, Accept-Encoding",
+    "content-security-policy": "base-uri 'self'; object-src 'none'; script-src 'strict-dynamic' 'unsafe-inline' https: http: 'nonce-i7Blh/989IGpqCCTjqrFMNJU6O08/6' 'unsafe-eval'; frame-ancestors 'self' https://developers.google.com/_d/analytics-iframe; report-uri https://csp.withgoogle.com/csp/devsite/v2",
+    "strict-transport-security": "max-age=63072000; includeSubdomains; preload",
+    "x-xss-protection": "0",
+    "x-content-type-options": "nosniff",
+    "cache-control": "no-cache, must-revalidate",
+    "expires": "0",
+    "pragma": "no-cache",
+    "content-encoding": "gzip",
+    "x-cloud-trace-context": "e744f994d949c6fa05d09be37b426cd3",
+    "date": "Wed, 27 May 2026 19:28:37 GMT",
+    "server": "Google Frontend",
+    "Transfer-Encoding": "chunked"
+  }
+}

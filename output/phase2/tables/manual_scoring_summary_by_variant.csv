@@ -1,0 +1,6 @@
+variant,model_name,num_cases,actionability_mean,usefulness_mean,unsupported_claim_rate,redundancy_rate
+QW_V1,Qwen2.5-3B-Instruct,20,3.75,3.75,0.3,0.1
+V2,Gemma-2-2B-IT,20,3.75,3.75,0.0,0.0
+QW_V3,Qwen2.5-3B-Instruct,20,3.6,3.6,0.15,0.1
+V1,Gemma-2-2B-IT,20,3.2,3.2,0.1,0.0
+V3,Gemma-2-2B-IT,20,3.05,3.05,0.15,0.0

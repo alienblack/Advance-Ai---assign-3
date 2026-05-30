@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Best Practices for Security - Amazon EKS</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="security" /><meta name="default_state" content="security" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/eks/latest/best-practices/security.html" /><meta name="description" content="This guide provides advice about protecting information, systems, and assets that are reliant on EKS while delivering business value through risk assessments and mitigation strategies. The guidance herein is part of a series of best practices guides that AWS is publishing to help customers implement EKS in accordance with best practices. Guides for Performance, Operational Excellence, Cost Optimization, and Reliability will be available in the coming months." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon EKS" /><meta name="guide" content="Best Practices Guide" /><meta name="abstract" content="Learn best practices for operating EKS clusters." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/eks/latest/best-practices/security.html" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/eks/latest/best-practices/security.html" hreflang="id-id" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/eks/latest/best-practices/security.html" hreflang="id" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/eks/latest/best-practices/security.html" hreflang="de-de" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/eks/latest/best-practices/security.html" hreflang="de" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/security.html" hreflang="en-us" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/security.html" hreflang="en" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/eks/latest/best-practices/security.html" hreflang="es-es" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/eks/latest/best-practices/security.html" hreflang="es" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/eks/latest/best-practices/security.html" hreflang="fr-fr" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/eks/latest/best-practices/security.html" hreflang="fr" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/eks/latest/best-practices/security.html" hreflang="it-it" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/eks/latest/best-practices/security.html" hreflang="it" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/eks/latest/best-practices/security.html" hreflang="ja-jp" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/eks/latest/best-practices/security.html" hreflang="ja" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/eks/latest/best-practices/security.html" hreflang="ko-kr" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/eks/latest/best-practices/security.html" hreflang="ko" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/eks/latest/best-practices/security.html" hreflang="pt-br" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/eks/latest/best-practices/security.html" hreflang="pt" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_cn/eks/latest/best-practices/security.html" hreflang="zh-cn" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_tw/eks/latest/best-practices/security.html" hreflang="zh-tw" /><link rel="alternate" href="https://docs.aws.amazon.com/eks/latest/best-practices/security.html" hreflang="x-default" /><meta name="feedback-item" content="Amazon EKS" /><meta name="this_doc_product" content="Amazon EKS" /><meta name="this_doc_guide" content="Best Practices Guide" /><head xmlns="http://www.w3.org/1999/xhtml"> <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js"></script><link href="/assets/r/awsdocs-doc-page.2.0.0.css" rel="stylesheet"/></head>
+<script defer="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'eks'}"></script><meta id="panorama-serviceSubSection" value="Best Practices Guide" /><meta id="panorama-serviceConsolePage" value="Best Practices for Security" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><p><a href="security.md">View a markdown version of this page</a></p><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Best Practices for Security - Amazon EKS</title><meta name="pdf" content="/pdfs/eks/latest/best-practices/eks-bpg.pdf#security" /><meta name="github" content="https://github.com/aws/aws-eks-best-practices/tree/master/latest/bpg/security/index.adoc" /><meta name="forums" content="https://repost.aws/tags/TA4IvCeWI1TE66q4jEj4Z9zg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon%20EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/security.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/security.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/security.html" /><link rel="alternate" type="text/markdown" href="security.md" title="Markdown version" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon EKS",
+        "item" : "https://docs.aws.amazon.com/eks/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Best Practices Guide",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Best Practices for Security",
+        "item" : "https://docs.aws.amazon.com/eks/latest/best-practices/security.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/eks/latest/best-practices/eks-bpg.pdf#security" target="_blank" rel="noopener noreferrer" title="Open PDF"></a><a href="https://github.com/aws/aws-eks-best-practices/tree/master/latest/bpg/security/index.adoc" target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="/index.html">Documentation</a><a href="/eks/index.html">Amazon EKS</a><a href="introduction.html">Best Practices Guide</a></div><div id="page-toc-src"><a href="#how-to-use-this-guide">How to use this guide</a><a href="#understanding-the-shared-responsibility-model">Understanding the Shared Responsibility Model</a><a href="#introduction">Introduction</a><a href="#feedback">Feedback</a><a href="#further-reading">Further Reading</a><a href="#tools-and-resources">Tools and resources</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="security">Best Practices for Security</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="awsdocs-note awsdocs-tip"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Tip</h6></div><div class="awsdocs-note-text"><p>
+         <a href="https://aws-experience.com/emea/smb/events/series/get-hands-on-with-amazon-eks?trk=4a9b4147-2490-4c63-bc9f-f8a84b122c8c&amp;sc_channel=el" rel="noopener noreferrer" target="_blank"><span>Explore</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> best practices through Amazon EKS workshops.</p></div></div><p>This guide provides advice about protecting information, systems, and
+assets that are reliant on EKS while delivering business value through
+risk assessments and mitigation strategies. The guidance herein is part
+of a series of best practices guides that AWS is publishing to help
+customers implement EKS in accordance with best practices. Guides for
+Performance, Operational Excellence, Cost Optimization, and Reliability
+will be available in the coming months.</p>
+      <h2 id="how-to-use-this-guide">How to use this guide</h2>
+      <p>This guide is meant for security practitioners who are responsible for
+implementing and monitoring the effectiveness of security controls for
+EKS clusters and the workloads they support. The guide is organized into
+different topic areas for easier consumption. Each topic starts with a
+brief overview, followed by a list of recommendations and best practices
+for securing your EKS clusters. The topics do not need to be read in a
+particular order.</p>
+    
+      <h2 id="understanding-the-shared-responsibility-model">Understanding the Shared Responsibility Model</h2>
+      <p>Security and compliance are considered shared responsibilities when
+using a managed service like EKS. Generally speaking, AWS is responsible
+for security "of" the cloud whereas you, the customer, are responsible
+for security "in" the cloud. With EKS, AWS is responsible for managing
+of the EKS managed Kubernetes control plane. This includes the
+Kubernetes control plane nodes, the ETCD database, and other
+infrastructure necessary for AWS to deliver a secure and reliable
+service. As a consumer of EKS, you are largely responsible for the
+topics in this guide, e.g. IAM, pod security, runtime security, network
+security, and so forth.</p>
+      <p>When it comes to infrastructure security, AWS will assume additional
+responsibilities as you move from self-managed workers, to managed node
+groups, to Fargate. For example, with Fargate, AWS becomes responsible
+for securing the underlying instance/runtime used to run your Pods.</p>
+      <p>
+         <b>Shared Responsibility Model - Fargate</b>
+      </p>
+      <div class="mediaobject">
+          
+            <img src="/images/eks/latest/best-practices/images/security/SRM-EKS.jpg" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="Shared Responsibility Model - Fargate" />
+          
+          
+      </div>
+      <p>AWS will also assume responsibility of keeping the EKS optimized AMI up
+to date with Kubernetes patch versions and security patches. Customers
+using Managed Node Groups (MNG) are responsible for upgrading their
+Nodegroups to the latest AMI via EKS API, CLI, Cloudformation or AWS
+Console. Also unlike Fargate, MNGs will not automatically scale your
+infrastructure/cluster. That can be handled by the
+<a href="https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md" rel="noopener noreferrer" target="_blank"><span>cluster-autoscaler</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+or other technologies such as <a href="https://karpenter.sh/" rel="noopener noreferrer" target="_blank"><span>Karpenter</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, native
+AWS autoscaling, SpotInst’s
+<a href="https://spot.io/product/ocean" rel="noopener noreferrer" target="_blank"><span>Ocean</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, or Atlassian’s
+<a href="https://github.com/atlassian/escalator" rel="noopener noreferrer" target="_blank"><span>Escalator</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+      <p>
+         <b>Shared Responsibility Model - MNG</b>
+      </p>
+      <div class="mediaobject">
+          
+            <img src="/images/eks/latest/best-practices/images/security/SRM-MNG.jpg" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="Shared Responsibility Model - MNG" />
+          
+          
+      </div>
+      <p>Before designing your system, it is important to know where the line of
+demarcation is between your responsibilities and the provider of the
+service (AWS).</p>
+      <p>For additional information about the shared responsibility model, see
+https://aws.amazon.com/compliance/shared-responsibility-model/</p>
+    
+      <h2 id="introduction">Introduction</h2>
+      <p>There are several security best practice areas that are pertinent when
+using a managed Kubernetes service like EKS:</p>
+      <div class="itemizedlist">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>Identity and Access Management</p>
+         </li><li class="listitem">
+            <p>Pod Security</p>
+         </li><li class="listitem">
+            <p>Runtime Security</p>
+         </li><li class="listitem">
+            <p>Network Security</p>
+         </li><li class="listitem">
+            <p>Multi-tenancy</p>
+         </li><li class="listitem">
+            <p>Multi Account for Multi-tenancy</p>
+         </li><li class="listitem">
+            <p>Detective Controls</p>
+         </li><li class="listitem">
+            <p>Infrastructure Security</p>
+         </li><li class="listitem">
+            <p>Data Encryption and Secrets Management</p>
+         </li><li class="listitem">
+            <p>Regulatory Compliance</p>
+         </li><li class="listitem">
+            <p>Incident Response and Forensics</p>
+         </li><li class="listitem">
+            <p>Image Security</p>
+         </li></ul></div>
+      <p>As part of designing any system, you need to think about its security
+implications and the practices that can affect your security posture.
+For example, you need to control who can perform actions against a set
+of resources. You also need the ability to quickly identify security
+incidents, protect your systems and services from unauthorized access,
+and maintain the confidentiality and integrity of data through data
+protection. Having a well-defined and rehearsed set of processes for
+responding to security incidents will improve your security posture too.
+These tools and techniques are important because they support objectives
+such as preventing financial loss or complying with regulatory
+obligations.</p>
+      <p>AWS helps organizations achieve their security and compliance goals by
+offering a rich set of security services that have evolved based on
+feedback from a broad set of security conscious customers. By offering a
+highly secure foundation, customers can spend less time on
+"undifferentiated heavy lifting" and more time on achieving their
+business objectives.</p>
+    
+      <h2 id="feedback">Feedback</h2>
+      <p>This guide is being released on GitHub so as to collect direct feedback
+and suggestions from the broader EKS/Kubernetes community. If you have a
+best practice that you feel we ought to include in the guide, please
+file an issue or submit a PR in the GitHub repository. Our intention is
+to update the guide periodically as new features are added to the
+service or when a new best practice evolves.</p>
+    
+      <h2 id="further-reading">Further Reading</h2>
+      <p>
+         <a href="https://github.com/kubernetes/sig-security/blob/main/sig-security-external-audit/security-audit-2019/findings/Kubernetes%20White%20Paper.pdf" rel="noopener noreferrer" target="_blank"><span>Kubernetes
+Security Whitepaper</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>, sponsored by the Security Audit Working Group,
+this Whitepaper describes key aspects of the Kubernetes attack surface
+and security architecture with the aim of helping security practitioners
+make sound design and implementation decisions.</p>
+      <p>The CNCF published also a
+<a href="https://github.com/cncf/tag-security/blob/efb183dc4f19a1bf82f967586c9dfcb556d87534/security-whitepaper/v2/CNCF_cloud-native-security-whitepaper-May2022-v2.pdf" rel="noopener noreferrer" target="_blank"><span>white
+paper</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> on cloud native security. The paper examines how the technology
+landscape has evolved and advocates for the adoption of security
+practices that align with DevOps processes and agile methodologies.</p>
+    
+      <h2 id="tools-and-resources">Tools and resources</h2>
+      <p>
+         <a href="https://catalog.workshops.aws/eks-security-immersionday/en-US" rel="noopener noreferrer" target="_blank"><span>Amazon EKS
+Security Immersion Workshop</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>
+      </p>
+   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./introduction.html">Introduction</div><div id="next" class="next-link" accesskey="n" href="./autosecure.html">EKS Auto Mode - Security</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/security.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/best-practices/security.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

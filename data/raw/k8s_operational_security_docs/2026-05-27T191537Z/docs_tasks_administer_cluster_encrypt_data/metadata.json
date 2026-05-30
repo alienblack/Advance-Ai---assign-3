@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T191537Z",
+  "source_id": "k8s_operational_security_docs",
+  "item_id": "docs_tasks_administer_cluster_encrypt_data",
+  "url": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+  "requested_url": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+  "fetched_at": "2026-05-27T19:15:38Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "4376d9be4470698eb4c026397d65183617784cbfdecf01e2fcba95bc5d9ef9d3",
+  "byte_size": 550940,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_operational_security_docs/2026-05-27T191537Z/docs_tasks_administer_cluster_encrypt_data/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1001",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "54780",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:15:38 GMT",
+    "Etag": "\"f06575ce4051309b6c146fd5489592d4-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNDT9G90B60K3DE9FPN857E"
+  }
+}

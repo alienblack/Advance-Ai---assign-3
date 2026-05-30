@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "k8s_operational_security_docs",
+  "item_id": "docs_concepts_cluster_administration_admission_webhooks_good_practices",
+  "url": "https://kubernetes.io/docs/concepts/cluster-administration/admission-webhooks-good-practices/",
+  "requested_url": "https://kubernetes.io/docs/concepts/cluster-administration/admission-webhooks-good-practices/",
+  "fetched_at": "2026-05-27T19:28:17Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "06c10fb409be1ded5b0eb6d115be28b6a065923471bdfa1d68c4502a4bbc88a3",
+  "byte_size": 520809,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_operational_security_docs/2026-05-27T192816Z/docs_concepts_cluster_administration_admission_webhooks_good_practices/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1759",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "52344",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:28:17 GMT",
+    "Etag": "\"ca5a2cb3962c8ab91ea7f3da6f3d1a52-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNEHEGMSS0HSXW65NM2ZDFP"
+  }
+}

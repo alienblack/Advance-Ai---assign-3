@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T191537Z",
+  "source_id": "k8s_cve_feed",
+  "item_id": "docs_reference_issues_security_official_cve_feed_index_json",
+  "url": "https://kubernetes.io/docs/reference/issues-security/official-cve-feed/index.json",
+  "requested_url": "https://kubernetes.io/docs/reference/issues-security/official-cve-feed/index.json",
+  "fetched_at": "2026-05-27T19:15:38Z",
+  "status_code": 200,
+  "content_type": "application/json",
+  "encoding": "utf-8",
+  "sha256": "80d539259b6d9e019434ca6b0907ec815a6505431527777fca95c17ce87baa5a",
+  "byte_size": 271429,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_cve_feed/2026-05-27T191537Z/docs_reference_issues_security_official_cve_feed_index_json/body.json",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1000",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "50265",
+    "Content-Type": "application/json",
+    "Date": "Wed, 27 May 2026 19:15:38 GMT",
+    "Etag": "\"4fdb3f053916ef08665d8060590dc029-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNDT9KJ0N16DKMM1WH2EFZV"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "snapshot_id": "2026-05-27T192816Z",
+  "source_id": "k8s_security_docs",
+  "item_id": "docs_concepts_security_secrets_good_practices",
+  "url": "https://kubernetes.io/docs/concepts/security/secrets-good-practices/",
+  "requested_url": "https://kubernetes.io/docs/concepts/security/secrets-good-practices/",
+  "fetched_at": "2026-05-27T19:28:16Z",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "encoding": "UTF-8",
+  "sha256": "8a7523a3ca23fc5a5d4334830fafe3638a037e3a893ef60800085fde1ee9cede",
+  "byte_size": 490320,
+  "local_body_path": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3/data/raw/k8s_security_docs/2026-05-27T192816Z/docs_concepts_security_secrets_good_practices/body.html",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Age": "1767",
+    "Cache-Control": "public,max-age=0,must-revalidate",
+    "Cache-Status": "\"Netlify Edge\"; hit",
+    "Content-Encoding": "br",
+    "Content-Length": "45634",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 27 May 2026 19:28:16 GMT",
+    "Etag": "\"9c9b4ea86212e6ff491d78372c0943f6-ssl-df\"",
+    "Server": "Netlify",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Vary": "Accept-Encoding",
+    "X-Nf-Request-Id": "01KSNEHDVK1H4JNB97QPTT2T6Y"
+  }
+}

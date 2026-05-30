@@ -1,0 +1,4 @@
+variant,retrieval_mode,retrieval_description,model_name,model_tier
+V1,baseline_dense_top3,Chroma dense similarity search with final top-3 chunks,Gemma-2-2B-IT,smaller_open_source_llm
+V2,improved_dense_mmr_top3,"Fetch top-10, apply MMR, limit repeated sources to 2, keep final top-3",Gemma-2-2B-IT,smaller_open_source_llm
+V3,intent_enriched_dense_mmr_top3,"Rewrite query with topic cues, fetch top-12, apply MMR, add topic-alignment bonus, limit repeated sources to 3, keep final top-3",Gemma-2-2B-IT,smaller_open_source_llm

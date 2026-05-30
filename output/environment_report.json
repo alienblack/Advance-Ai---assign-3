@@ -1,0 +1,25 @@
+{
+  "python_version": "3.12.13",
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+  "packages": {
+    "requests": "2.32.3",
+    "beautifulsoup4": "4.12.3",
+    "lxml": "5.2.2",
+    "matplotlib": "3.9.0",
+    "pypdf": "4.2.0",
+    "pandas": "2.2.2",
+    "numpy": "1.26.4",
+    "sentence-transformers": "3.0.1",
+    "transformers": "4.46.3",
+    "tokenizers": "0.20.3",
+    "huggingface-hub": "0.36.2",
+    "chromadb": "0.5.23",
+    "accelerate": "1.13.0",
+    "bert-score": "0.3.13",
+    "ragas": "0.4.3",
+    "openai": "2.38.0",
+    "datasets": "4.8.5"
+  },
+  "in_colab": true,
+  "project_root": "/content/drive/MyDrive/Advance-AI-Assign-3/a1974524_a3"
+}

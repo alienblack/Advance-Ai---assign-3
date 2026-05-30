@@ -1,0 +1,7 @@
+{
+  "snapshot_id": "2026-05-27T191537Z",
+  "model_name": "all-MiniLM-L6-v2",
+  "batch_size": 32,
+  "num_vectors": 2094,
+  "vector_dim": 384
+}
