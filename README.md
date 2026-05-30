@@ -8,7 +8,7 @@ Repository target: `https://github.com/alienblack/Advance-Ai---assign-3`
 
 - `a1974524_A3.ipynb`: final report notebook
 - `src/phase1_pipeline.py`: Phase 1 ingestion, parsing, chunking, embedding, and snapshot helpers
-- `src/phase2/`: Phase 2 retrieval, generation, evaluation, analysis, and reporting helpers
+- `src/phase2/`: Phase 2 retrieval, generation, evaluation, and analysis helpers
 - `src/project_paths.py`: project-root and output-path resolution helpers for local and Colab runs
 - `requirements_colab.txt`: pinned package list used in the Colab setup cell
 - `output/`: generated figures, tables, and saved run summaries
